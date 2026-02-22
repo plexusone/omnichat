@@ -137,6 +137,51 @@ router.Broadcast(ctx, map[string]string{
 })
 ```
 
+## Voice Message Support
+
+The router supports voice message processing via the `VoiceProcessor` interface:
+
+```go
+// VoiceProcessor handles voice transcription and synthesis
+type VoiceProcessor interface {
+    TranscribeAudio(ctx context.Context, audio []byte, mimeType string) (string, error)
+    SynthesizeSpeech(ctx context.Context, text string) ([]byte, string, error)
+    ResponseMode() string  // "auto", "always", "never"
+}
+
+// Use ProcessWithVoice for voice-enabled message handling
+router.SetAgent(agent)
+router.OnMessage(provider.All(), router.ProcessWithVoice(voiceProcessor))
+```
+
+Features:
+
+- **Automatic transcription**: Voice messages are transcribed to text before processing
+- **Voice responses**: Text responses are synthesized to voice notes
+- **Smart URL handling**: Responses with URLs include both voice and text for clickable links
+- **Response modes**: `auto` (voice reply to voice input), `always`, `never`
+
+WhatsApp voice notes are automatically detected and handled:
+
+```go
+// Incoming voice messages have Media with Type = MediaTypeVoice
+for _, media := range msg.Media {
+    if media.Type == provider.MediaTypeVoice {
+        // media.Data contains audio bytes
+        // media.MimeType is typically "audio/ogg; codecs=opus"
+    }
+}
+
+// Send voice notes with PTT (Push-to-Talk) flag
+router.Send(ctx, "whatsapp", chatID, provider.OutgoingMessage{
+    Media: []provider.Media{{
+        Type:     provider.MediaTypeVoice,
+        Data:     audioBytes,
+        MimeType: "audio/ogg; codecs=opus",
+    }},
+})
+```
+
 ## Testing
 
 Use the mock provider for testing:

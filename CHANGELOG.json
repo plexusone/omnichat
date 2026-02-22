@@ -7,6 +7,21 @@
   "maintainers": ["agentplexus", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.2.0",
+      "date": "2026-02-22",
+      "highlights": [
+        { "description": "Voice message support with transcription and synthesis integration" }
+      ],
+      "added": [
+        { "description": "`VoiceProcessor` interface for STT/TTS integration with `TranscribeAudio`, `SynthesizeSpeech`, and `ResponseMode` methods", "commit": "40b6c90" },
+        { "description": "`ProcessWithVoice` router handler for voice-enabled message processing", "commit": "40b6c90" },
+        { "description": "WhatsApp audio message download via whatsmeow `Download` method", "commit": "40b6c90" },
+        { "description": "WhatsApp audio message upload and send with PTT (Push-to-Talk) flag for voice notes", "commit": "40b6c90" },
+        { "description": "Automatic URL detection in responses to include text alongside voice for clickable links", "commit": "40b6c90" },
+        { "description": "Support for `MediaTypeVoice` and `MediaTypeAudio` in WhatsApp provider", "commit": "40b6c90" }
+      ]
+    },
+    {
       "version": "v0.1.0",
       "date": "2026-02-22",
       "highlights": [
