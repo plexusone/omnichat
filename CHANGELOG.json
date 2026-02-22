@@ -1,0 +1,42 @@
+{
+  "irVersion": "1.0",
+  "project": "omnichat",
+  "repository": "https://github.com/agentplexus/omnichat",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": ["agentplexus", "johncwang@gmail.com"],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-02-22",
+      "highlights": [
+        { "description": "Unified Go interface for messaging platforms with Discord, Telegram, and WhatsApp providers" },
+        { "description": "Multi-provider message routing with pattern matching" },
+        { "description": "WhatsApp support via whatsmeow with QR code authentication and SQLite session persistence" }
+      ],
+      "added": [
+        { "description": "`Provider` interface with Connect, Disconnect, Send, OnMessage, OnEvent methods", "commit": "c923d0d" },
+        { "description": "`StreamingProvider` interface for typing indicators and streaming messages", "commit": "c923d0d" },
+        { "description": "`IncomingMessage` and `OutgoingMessage` types with media attachment support", "commit": "c923d0d" },
+        { "description": "`Router` for multi-provider message routing with pattern matching", "commit": "c923d0d" },
+        { "description": "Route patterns: `All()`, `DMOnly()`, `GroupOnly()`, `FromProviders()`", "commit": "c923d0d" },
+        { "description": "`providertest` package with conformance test helpers for provider implementations", "commit": "84d9319" },
+        { "description": "Discord provider using discordgo with guild, DM, and thread support", "commit": "9dc7321" },
+        { "description": "Telegram provider using telebot with group, channel, and private message support", "commit": "baaa5ab" },
+        { "description": "WhatsApp provider using whatsmeow with QR code authentication", "commit": "55fcace" },
+        { "description": "SQLite session persistence for WhatsApp using pure Go driver (no CGO)", "commit": "55fcace" },
+        { "description": "Echo bot example demonstrating multi-provider usage", "commit": "3deab82" }
+      ],
+      "documentation": [
+        { "description": "README with installation, quick start, and provider examples", "commit": "05771bf" },
+        { "description": "MIT License", "commit": "05771bf" }
+      ],
+      "infrastructure": [
+        { "description": "GitHub Actions CI workflow", "commit": "c454b30" },
+        { "description": "GitHub Actions lint workflow with golangci-lint", "commit": "c454b30" },
+        { "description": "CodeQL security analysis workflow", "commit": "c454b30" },
+        { "description": "Dependabot configuration for Go modules", "commit": "c454b30" }
+      ]
+    }
+  ]
+}
