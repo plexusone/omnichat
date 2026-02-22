@@ -151,15 +151,56 @@ func (p *Provider) Send(ctx context.Context, chatID string, msg provider.Outgoin
 		return fmt.Errorf("parse chat ID: %w", err)
 	}
 
-	// Build the WhatsApp message
-	waMsg := &waE2E.Message{
-		Conversation: proto.String(msg.Content),
+	// Handle audio/voice media attachments
+	for _, media := range msg.Media {
+		if media.Type == provider.MediaTypeVoice || media.Type == provider.MediaTypeAudio {
+			uploadResp, err := p.client.Upload(ctx, media.Data, whatsmeow.MediaAudio)
+			if err != nil {
+				return fmt.Errorf("upload audio: %w", err)
+			}
+
+			isPTT := media.Type == provider.MediaTypeVoice
+			mimeType := media.MimeType
+			if mimeType == "" {
+				mimeType = "audio/ogg; codecs=opus"
+			}
+
+			audioMsg := &waE2E.Message{
+				AudioMessage: &waE2E.AudioMessage{
+					URL:           proto.String(uploadResp.URL),
+					DirectPath:    proto.String(uploadResp.DirectPath),
+					MediaKey:      uploadResp.MediaKey,
+					FileEncSHA256: uploadResp.FileEncSHA256,
+					FileSHA256:    uploadResp.FileSHA256,
+					FileLength:    proto.Uint64(uint64(len(media.Data))),
+					Mimetype:      proto.String(mimeType),
+					PTT:           proto.Bool(isPTT),
+				},
+			}
+
+			_, err = p.client.SendMessage(ctx, jid, audioMsg)
+			if err != nil {
+				return fmt.Errorf("send audio: %w", err)
+			}
+
+			p.logger.Info("audio message sent",
+				"type", media.Type,
+				"mime", mimeType,
+				"size", len(media.Data),
+				"ptt", isPTT)
+		}
 	}
 
-	// Send the message
-	_, err = p.client.SendMessage(ctx, jid, waMsg)
-	if err != nil {
-		return fmt.Errorf("send message: %w", err)
+	// Send text content if present
+	if msg.Content != "" {
+		waMsg := &waE2E.Message{
+			Conversation: proto.String(msg.Content),
+		}
+
+		_, err = p.client.SendMessage(ctx, jid, waMsg)
+		if err != nil {
+			return fmt.Errorf("send message: %w", err)
+		}
 	}
 
 	return nil
@@ -209,7 +250,7 @@ func (p *Provider) convertIncoming(evt *events.Message) provider.IncomingMessage
 		content = evt.Message.GetExtendedTextMessage().GetText()
 	}
 
-	return provider.IncomingMessage{
+	msg := provider.IncomingMessage{
 		ID:           evt.Info.ID,
 		ProviderName: "whatsapp",
 		ChatID:       evt.Info.Chat.String(),
@@ -223,6 +264,30 @@ func (p *Provider) convertIncoming(evt *events.Message) provider.IncomingMessage
 			"is_group":   evt.Info.IsGroup,
 		},
 	}
+
+	// Handle audio/voice messages
+	if audioMsg := evt.Message.GetAudioMessage(); audioMsg != nil {
+		audioData, err := p.client.Download(context.Background(), audioMsg)
+		if err != nil {
+			p.logger.Error("failed to download audio", "error", err)
+		} else {
+			mediaType := provider.MediaTypeAudio
+			if audioMsg.GetPTT() {
+				mediaType = provider.MediaTypeVoice
+			}
+			msg.Media = append(msg.Media, provider.Media{
+				Type:     mediaType,
+				Data:     audioData,
+				MimeType: audioMsg.GetMimetype(),
+			})
+			p.logger.Info("audio message received",
+				"type", mediaType,
+				"mime", audioMsg.GetMimetype(),
+				"size", len(audioData))
+		}
+	}
+
+	return msg
 }
 
 // IsLoggedIn returns true if the client has an active session.

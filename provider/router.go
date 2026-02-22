@@ -12,6 +12,16 @@ type AgentProcessor interface {
 	Process(ctx context.Context, sessionID, content string) (string, error)
 }
 
+// VoiceProcessor handles voice transcription and synthesis.
+type VoiceProcessor interface {
+	// TranscribeAudio converts audio to text.
+	TranscribeAudio(ctx context.Context, audio []byte, mimeType string) (string, error)
+	// SynthesizeSpeech converts text to audio. Returns audio bytes and MIME type.
+	SynthesizeSpeech(ctx context.Context, text string) ([]byte, string, error)
+	// ResponseMode returns the voice response mode ("auto", "always", "never").
+	ResponseMode() string
+}
+
 // Router routes messages between providers and handlers.
 type Router struct {
 	providers map[string]Provider
@@ -94,6 +104,132 @@ func (r *Router) ProcessWithAgent() MessageHandler {
 			Content: response,
 			ReplyTo: msg.ID,
 		})
+	}
+}
+
+// ProcessWithVoice creates a message handler with voice transcription and synthesis.
+// It transcribes incoming voice notes, processes through the agent, and optionally
+// responds with synthesized voice based on the voice processor's response mode.
+func (r *Router) ProcessWithVoice(voice VoiceProcessor) MessageHandler {
+	return func(ctx context.Context, msg IncomingMessage) error {
+		r.mu.RLock()
+		agent := r.agent
+		r.mu.RUnlock()
+
+		if agent == nil {
+			r.logger.Warn("no agent configured, message not processed",
+				"provider", msg.ProviderName,
+				"chat", msg.ChatID)
+			return nil
+		}
+
+		// Use chatID as session ID for conversation continuity
+		sessionID := fmt.Sprintf("%s:%s", msg.ProviderName, msg.ChatID)
+
+		// Check if incoming message has voice/audio media
+		var incomingVoice bool
+		content := msg.Content
+
+		for _, media := range msg.Media {
+			if media.Type == MediaTypeVoice || media.Type == MediaTypeAudio {
+				incomingVoice = true
+				// Transcribe the audio
+				transcribed, err := voice.TranscribeAudio(ctx, media.Data, media.MimeType)
+				if err != nil {
+					r.logger.Error("transcription failed",
+						"provider", msg.ProviderName,
+						"chat", msg.ChatID,
+						"error", err)
+					return err
+				}
+				content = transcribed
+				r.logger.Info("voice message transcribed",
+					"provider", msg.ProviderName,
+					"chat", msg.ChatID,
+					"text_length", len(transcribed))
+				break
+			}
+		}
+
+		// Skip if no content to process
+		if content == "" {
+			r.logger.Debug("no content to process",
+				"provider", msg.ProviderName,
+				"chat", msg.ChatID)
+			return nil
+		}
+
+		r.logger.Info("processing message",
+			"provider", msg.ProviderName,
+			"chat", msg.ChatID,
+			"from", msg.SenderName,
+			"voice_input", incomingVoice)
+
+		// Process through agent
+		response, err := agent.Process(ctx, sessionID, content)
+		if err != nil {
+			r.logger.Error("agent processing error",
+				"provider", msg.ProviderName,
+				"chat", msg.ChatID,
+				"error", err)
+			return err
+		}
+
+		// Determine if we should respond with voice
+		respondWithVoice := false
+		switch voice.ResponseMode() {
+		case "always":
+			respondWithVoice = true
+		case "auto":
+			respondWithVoice = incomingVoice
+		case "never":
+			respondWithVoice = false
+		}
+
+		// Check if response contains URLs (need text for clickable links)
+		hasURLs := containsURL(response)
+
+		// Build response
+		outMsg := OutgoingMessage{
+			ReplyTo: msg.ID,
+		}
+
+		if respondWithVoice {
+			// Synthesize speech
+			audioData, mimeType, err := voice.SynthesizeSpeech(ctx, response)
+			if err != nil {
+				r.logger.Error("speech synthesis failed",
+					"provider", msg.ProviderName,
+					"chat", msg.ChatID,
+					"error", err)
+				// Fall back to text response
+				outMsg.Content = response
+			} else {
+				outMsg.Media = append(outMsg.Media, Media{
+					Type:     MediaTypeVoice,
+					Data:     audioData,
+					MimeType: mimeType,
+				})
+				// Also include text if response has URLs so user can click them
+				if hasURLs {
+					outMsg.Content = response
+					r.logger.Info("voice response with text (URLs detected)",
+						"provider", msg.ProviderName,
+						"chat", msg.ChatID,
+						"audio_size", len(audioData))
+				} else {
+					r.logger.Info("voice response synthesized",
+						"provider", msg.ProviderName,
+						"chat", msg.ChatID,
+						"audio_size", len(audioData))
+				}
+			}
+		} else {
+			outMsg.Content = response
+		}
+
+		// Send response back to the same provider/chat
+		return r.Send(ctx, msg.ProviderName, msg.ChatID, outMsg)
 	}
 }
 
@@ -304,4 +440,20 @@ func DMOnly() RoutePattern {
 // GroupOnly returns a pattern that matches only group messages.
 func GroupOnly() RoutePattern {
 	return RoutePattern{ChatTypes: []ChatType{ChatTypeGroup}}
+}
+
+// containsURL checks if text contains a URL.
+func containsURL(text string) bool {
+	// Simple check for common URL patterns
+	patterns := []string{"http://", "https://", "www."}
+	for _, p := range patterns {
+		if len(text) >= len(p) {
+			for i := 0; i <= len(text)-len(p); i++ {
+				if text[i:i+len(p)] == p {
+					return true
+				}
+			}
+		}
+	}
+	return false
 }
