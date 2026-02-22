@@ -161,17 +161,17 @@ sent := mock.SentMessages()
 
 MIT
 
- [build-status-svg]: https://github.com/grokify/omnichat/actions/workflows/ci.yaml/badge.svg?branch=main
- [build-status-url]: https://github.com/grokify/omnichat/actions/workflows/ci.yaml
- [lint-status-svg]: https://github.com/grokify/omnichat/actions/workflows/lint.yaml/badge.svg?branch=main
- [lint-status-url]: https://github.com/grokify/omnichat/actions/workflows/lint.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/omnichat
- [goreport-url]: https://goreportcard.com/report/github.com/grokify/omnichat
- [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/grokify/omnichat
- [docs-godoc-url]: https://pkg.go.dev/github.com/grokify/omnichat
+ [build-status-svg]: https://github.com/agentplexus/omnichat/actions/workflows/ci.yaml/badge.svg?branch=main
+ [build-status-url]: https://github.com/agentplexus/omnichat/actions/workflows/ci.yaml
+ [lint-status-svg]: https://github.com/agentplexus/omnichat/actions/workflows/lint.yaml/badge.svg?branch=main
+ [lint-status-url]: https://github.com/agentplexus/omnichat/actions/workflows/lint.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/omnichat
+ [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/omnichat
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/omnichat
+ [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/omnichat
  [viz-svg]: https://img.shields.io/badge/visualizaton-Go-blue.svg
- [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=grokify%2Fomnichat
- [loc-svg]: https://tokei.rs/b1/github/grokify/omnichat
- [repo-url]: https://github.com/grokify/omnichat
+ [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=agentplexus%2Fomnichat
+ [loc-svg]: https://tokei.rs/b1/github/agentplexus/omnichat
+ [repo-url]: https://github.com/agentplexus/omnichat
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/grokify/omnichat/blob/master/LICENSE
+ [license-url]: https://github.com/agentplexus/omnichat/blob/master/LICENSE
