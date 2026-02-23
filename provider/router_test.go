@@ -132,15 +132,15 @@ type mockProvider struct {
 	sentMessages []OutgoingMessage
 }
 
-func (m *mockProvider) Name() string { return m.name }
-func (m *mockProvider) Connect(ctx context.Context) error { return nil }
+func (m *mockProvider) Name() string                         { return m.name }
+func (m *mockProvider) Connect(ctx context.Context) error    { return nil }
 func (m *mockProvider) Disconnect(ctx context.Context) error { return nil }
 func (m *mockProvider) Send(ctx context.Context, chatID string, msg OutgoingMessage) error {
 	m.sentMessages = append(m.sentMessages, msg)
 	return nil
 }
 func (m *mockProvider) OnMessage(handler MessageHandler) {}
-func (m *mockProvider) OnEvent(handler EventHandler) {}
+func (m *mockProvider) OnEvent(handler EventHandler)     {}
 
 func TestProcessWithVoice_TextMessage(t *testing.T) {
 	router := NewRouter(nil)
