@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agentplexus/omnichat/provider"
+	"github.com/plexusone/omnichat/provider"
 )
 
 // TestProvider runs conformance tests for a provider implementation.

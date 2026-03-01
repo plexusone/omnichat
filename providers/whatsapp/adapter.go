@@ -16,7 +16,7 @@ import (
 	waLog "go.mau.fi/whatsmeow/util/log"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/agentplexus/omnichat/provider"
+	"github.com/plexusone/omnichat/provider"
 )
 
 // Provider implements the Provider interface for WhatsApp.

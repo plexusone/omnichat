@@ -8,7 +8,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 
-	"github.com/agentplexus/omnichat/provider"
+	"github.com/plexusone/omnichat/provider"
 )
 
 // Provider implements the Provider interface for Discord.

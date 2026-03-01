@@ -12,10 +12,10 @@ import (
 
 	"github.com/mdp/qrterminal/v3"
 
-	"github.com/agentplexus/omnichat/provider"
-	"github.com/agentplexus/omnichat/providers/discord"
-	"github.com/agentplexus/omnichat/providers/telegram"
-	"github.com/agentplexus/omnichat/providers/whatsapp"
+	"github.com/plexusone/omnichat/provider"
+	"github.com/plexusone/omnichat/providers/discord"
+	"github.com/plexusone/omnichat/providers/telegram"
+	"github.com/plexusone/omnichat/providers/whatsapp"
 )
 
 func main() {

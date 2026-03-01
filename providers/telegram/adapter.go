@@ -10,7 +10,7 @@ import (
 
 	"gopkg.in/telebot.v3"
 
-	"github.com/agentplexus/omnichat/provider"
+	"github.com/plexusone/omnichat/provider"
 )
 
 // Provider implements the Provider interface for Telegram.

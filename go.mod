@@ -1,11 +1,11 @@
-module github.com/agentplexus/omnichat
+module github.com/plexusone/omnichat
 
 go 1.25.0
 
 require (
 	github.com/bwmarrin/discordgo v0.29.0
 	github.com/mdp/qrterminal/v3 v3.2.1
-	go.mau.fi/whatsmeow v0.0.0-20260219150138-7ae702b1eed4
+	go.mau.fi/whatsmeow v0.0.0-20260227112304-c9652e4448a2
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
 	modernc.org/sqlite v1.46.1
@@ -22,7 +22,7 @@ require (
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
-	github.com/petermattis/goid v0.0.0-20260113132338-7c7de50cc741 // indirect
+	github.com/petermattis/goid v0.0.0-20260226131333-17d1149c6ac6 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/rs/zerolog v1.34.0 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.32 // indirect
@@ -30,11 +30,11 @@ require (
 	go.mau.fi/util v0.9.6 // indirect
 	golang.org/x/crypto v0.48.0 // indirect
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa // indirect
-	golang.org/x/net v0.50.0 // indirect
+	golang.org/x/net v0.51.0 // indirect
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/term v0.40.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
-	modernc.org/libc v1.68.0 // indirect
+	modernc.org/libc v1.69.0 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	rsc.io/qr v0.2.0 // indirect
