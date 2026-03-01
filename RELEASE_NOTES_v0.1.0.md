@@ -67,7 +67,7 @@ whatsapp.New(whatsapp.Config{
 ## Installation
 
 ```bash
-go get github.com/agentplexus/omnichat
+go get github.com/plexusone/omnichat
 ```
 
 ## Quick Start

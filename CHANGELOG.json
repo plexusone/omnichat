@@ -1,11 +1,28 @@
 {
+  "$schema": "https://github.com/grokify/structured-changelog/raw/v0.7/schema/changelog.schema.json",
   "irVersion": "1.0",
   "project": "omnichat",
-  "repository": "https://github.com/agentplexus/omnichat",
+  "repository": "https://github.com/plexusone/omnichat",
   "versioning": "semver",
   "commitConvention": "conventional",
-  "maintainers": ["agentplexus", "johncwang@gmail.com"],
+  "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
+    {
+      "version": "v0.3.0",
+      "date": "2026-03-01",
+      "highlights": [
+        { "description": "Organization rename from agentplexus to plexusone" }
+      ],
+      "changed": [
+        { "description": "**Breaking**: Module path changed from `github.com/agentplexus/omnichat` to `github.com/plexusone/omnichat`" }
+      ],
+      "tests": [
+        { "description": "Router tests for `containsURL` and `ProcessWithVoice` covering response modes and URL detection", "commit": "7c9c769" }
+      ],
+      "internal": [
+        { "description": "Fix `gofmt` formatting in router tests", "commit": "cd4cd0b" }
+      ]
+    },
     {
       "version": "v0.2.0",
       "date": "2026-02-22",

@@ -72,5 +72,5 @@ This release is backwards compatible. To use voice features:
 2. Use `router.ProcessWithVoice(processor)` instead of `router.ProcessWithAgent()`
 
 ```bash
-go get github.com/agentplexus/omnichat@v0.2.0
+go get github.com/plexusone/omnichat@v0.2.0
 ```
