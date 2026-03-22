@@ -7,7 +7,25 @@
 [![Visualization][viz-svg]][viz-url]
 [![License][license-svg]][license-url]
 
-A Go library providing a unified interface for messaging platforms (Discord, Telegram, WhatsApp).
+A Go library providing a unified interface for messaging platforms.
+
+## Features
+
+- 🔌 **Unified Interface** - Single API for multiple messaging platforms
+- 🔀 **Message Router** - Pattern-based routing with filters (`All`, `DMOnly`, `GroupOnly`, `FromProviders`)
+- 🎤 **Voice Support** - Transcription and synthesis integration for voice messages
+- 📎 **Media Handling** - Send and receive images, documents, audio, and video
+- 🧪 **Mock Provider** - Built-in testing support with message simulation
+
+## Providers
+
+| Provider | Package | Features |
+|----------|---------|----------|
+| Discord | `providers/discord` | Guilds, DMs, threads, media |
+| Telegram | `providers/telegram` | Groups, channels, private chats, media |
+| WhatsApp | `providers/whatsapp` | QR auth, voice notes, media |
+| Slack | `providers/slack` | Socket Mode, channels, threads |
+| Gmail | `providers/email/gmail` | OAuth2, HTML/Markdown email |
 
 ## Installation
 
