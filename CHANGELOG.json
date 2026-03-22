@@ -8,11 +8,26 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
-      "version": "v0.4.0-unreleased",
+      "version": "v0.4.0",
       "date": "2026-03-22",
+      "highlights": [
+        { "description": "Gmail and Slack providers for expanded platform support" },
+        { "description": "MkDocs documentation site with comprehensive guides" }
+      ],
       "added": [
         { "description": "Gmail provider for email integration via gogoogle v0.9.0 SendSimple API", "commit": "150bc43" },
         { "description": "Slack provider with Socket Mode for real-time events", "commit": "a923146" }
+      ],
+      "documentation": [
+        { "description": "MkDocs site with Material theme and provider guides", "commit": "60f78bc" },
+        { "description": "Release notes consolidated into `docs/releases/`", "commit": "28d8b91" },
+        { "description": "README Features section with provider table", "commit": "86fc80c" }
+      ],
+      "dependencies": [
+        { "description": "Bump modernc.org/sqlite from 1.46.1 to 1.47.0", "commit": "b860d12" }
+      ],
+      "infrastructure": [
+        { "description": "Update to shared GitHub Actions workflows", "commit": "04205ed" }
       ]
     },
     {
