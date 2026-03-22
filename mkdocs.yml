@@ -1,0 +1,64 @@
+site_name: OmniChat
+site_description: Unified Go library for messaging platforms
+site_url: https://plexusone.github.io/omnichat/
+repo_url: https://github.com/plexusone/omnichat
+repo_name: plexusone/omnichat
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Providers:
+      - Overview: providers/index.md
+      - Discord: providers/discord.md
+      - Telegram: providers/telegram.md
+      - WhatsApp: providers/whatsapp.md
+      - Slack: providers/slack.md
+      - Gmail: providers/gmail.md
+  - Reference:
+      - Router: reference/router.md
+      - Voice Processing: reference/voice.md
+      - Testing: reference/testing.md
+  - Releases:
+      - v0.3.0: releases/v0.3.0.md
+      - v0.2.0: releases/v0.2.0.md
+      - v0.1.0: releases/v0.1.0.md
+  - Changelog: changelog.md

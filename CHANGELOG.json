@@ -8,6 +8,14 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.4.0-unreleased",
+      "date": "2026-03-22",
+      "added": [
+        { "description": "Gmail provider for email integration via gogoogle v0.9.0 SendSimple API", "commit": "150bc43" },
+        { "description": "Slack provider with Socket Mode for real-time events", "commit": "a923146" }
+      ]
+    },
+    {
       "version": "v0.3.0",
       "date": "2026-03-01",
       "highlights": [
