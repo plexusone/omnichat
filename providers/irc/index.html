@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://plexusone.github.io/omnichat/providers/slack/">
+        <link rel="canonical" href="https://plexusone.github.io/omnichat/providers/irc/">
       
       
-        <link rel="prev" href="../whatsapp/">
+        <link rel="prev" href="../gmail/">
       
       
-        <link rel="next" href="../gmail/">
+        <link rel="next" href="../../reference/router/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Slack - OmniChat</title>
+        <title>IRC - OmniChat</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slack" class="md-skip">
+        <a href="#irc" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slack
+              IRC
             
           </span>
         </div>
@@ -569,6 +569,52 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../slack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gmail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gmail
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -586,7 +632,7 @@
   
   
   <span class="md-ellipsis">
-    Slack
+    IRC
     
   </span>
   
@@ -599,7 +645,7 @@
   
   
   <span class="md-ellipsis">
-    Slack
+    IRC
     
   </span>
   
@@ -655,53 +701,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-slack-app" class="md-nav__link">
+  <a href="#irc-networks" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Slack App
+      IRC Networks
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Creating a Slack App">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enable-socket-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Socket Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bot-token-scopes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bot Token Scopes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#event-subscriptions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Event Subscriptions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-to-workspace" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install to Workspace
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -734,9 +738,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sending-media" class="md-nav__link">
+  <a href="#joining-channels" class="md-nav__link">
     <span class="md-ellipsis">
-      Sending Media
+      Joining Channels
     </span>
   </a>
   
@@ -767,27 +771,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#messages" class="md-nav__link">
+  <a href="#messages-privmsg" class="md-nav__link">
     <span class="md-ellipsis">
-      Messages
+      Messages (PRIVMSG)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reactions" class="md-nav__link">
+  <a href="#joinpart-events" class="md-nav__link">
     <span class="md-ellipsis">
-      Reactions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#member-joins" class="md-nav__link">
-    <span class="md-ellipsis">
-      Member Joins
+      Join/Part Events
     </span>
   </a>
   
@@ -799,9 +794,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#channel-types" class="md-nav__link">
+  <a href="#nickserv-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Channel Types
+      NickServ Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NickServ Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-a-nickname-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register a Nickname (Manual)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-length-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Length Limits
     </span>
   </a>
   
@@ -827,36 +864,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bot-not-receiving-messages" class="md-nav__link">
+  <a href="#connection-refused" class="md-nav__link">
     <span class="md-ellipsis">
-      Bot not receiving messages
+      Connection refused
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#permission-errors" class="md-nav__link">
+  <a href="#nickname-already-in-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Permission errors
+      Nickname already in use
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#connection-drops" class="md-nav__link">
+  <a href="#cannot-join-channel" class="md-nav__link">
     <span class="md-ellipsis">
-      Connection drops
+      Cannot join channel
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#messages-not-received" class="md-nav__link">
     <span class="md-ellipsis">
-      Rate limiting
+      Messages not received
     </span>
   </a>
   
@@ -889,52 +926,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../gmail/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Gmail
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../irc/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    IRC
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1317,53 +1308,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-a-slack-app" class="md-nav__link">
+  <a href="#irc-networks" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating a Slack App
+      IRC Networks
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Creating a Slack App">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enable-socket-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Socket Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bot-token-scopes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bot Token Scopes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#event-subscriptions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Event Subscriptions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-to-workspace" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install to Workspace
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1396,9 +1345,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sending-media" class="md-nav__link">
+  <a href="#joining-channels" class="md-nav__link">
     <span class="md-ellipsis">
-      Sending Media
+      Joining Channels
     </span>
   </a>
   
@@ -1429,27 +1378,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#messages" class="md-nav__link">
+  <a href="#messages-privmsg" class="md-nav__link">
     <span class="md-ellipsis">
-      Messages
+      Messages (PRIVMSG)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reactions" class="md-nav__link">
+  <a href="#joinpart-events" class="md-nav__link">
     <span class="md-ellipsis">
-      Reactions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#member-joins" class="md-nav__link">
-    <span class="md-ellipsis">
-      Member Joins
+      Join/Part Events
     </span>
   </a>
   
@@ -1461,9 +1401,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#channel-types" class="md-nav__link">
+  <a href="#nickserv-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Channel Types
+      NickServ Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NickServ Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register-a-nickname-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Register a Nickname (Manual)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-length-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Length Limits
     </span>
   </a>
   
@@ -1489,36 +1471,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bot-not-receiving-messages" class="md-nav__link">
+  <a href="#connection-refused" class="md-nav__link">
     <span class="md-ellipsis">
-      Bot not receiving messages
+      Connection refused
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#permission-errors" class="md-nav__link">
+  <a href="#nickname-already-in-use" class="md-nav__link">
     <span class="md-ellipsis">
-      Permission errors
+      Nickname already in use
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#connection-drops" class="md-nav__link">
+  <a href="#cannot-join-channel" class="md-nav__link">
     <span class="md-ellipsis">
-      Connection drops
+      Cannot join channel
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#messages-not-received" class="md-nav__link">
     <span class="md-ellipsis">
-      Rate limiting
+      Messages not received
     </span>
   </a>
   
@@ -1566,19 +1548,22 @@
   
 
 
-<h1 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h1>
-<p>The Slack provider uses <a href="https://github.com/slack-go/slack">slack-go</a> with Socket Mode for real-time events.</p>
+<h1 id="irc">IRC<a class="headerlink" href="#irc" title="Permanent link">&para;</a></h1>
+<p>The IRC provider uses <a href="https://github.com/ergochat/irc-go">ergochat/irc-go</a> for connecting to IRC servers.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omnichat/providers/slack
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omnichat/providers/irc
 </code></pre></div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omnichat/providers/slack&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omnichat/providers/irc&quot;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slack</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">slack</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">BotToken</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xoxb-...&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// Bot token</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">AppToken</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xapp-...&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// App-level token for Socket Mode</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">Logger</span><span class="p">:</span><span class="w">   </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">(),</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">})</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">irc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">irc</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">Server</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;irc.libera.chat:6697&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">Nick</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;mybot&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">Password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nickserv-password&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Optional</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">Channels</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;#channel1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#channel2&quot;</span><span class="p">},</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">UseTLS</span><span class="p">:</span><span class="w">   </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">Logger</span><span class="p">:</span><span class="w">   </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">(),</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">})</span>
 </code></pre></div>
 <h3 id="config-options">Config Options<a class="headerlink" href="#config-options" title="Permanent link">&para;</a></h3>
 <table>
@@ -1592,16 +1577,46 @@
 </thead>
 <tbody>
 <tr>
-<td><code>BotToken</code></td>
+<td><code>Server</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Bot token (<code>xoxb-...</code>)</td>
+<td>IRC server address (e.g., <code>irc.libera.chat:6697</code>)</td>
 </tr>
 <tr>
-<td><code>AppToken</code></td>
+<td><code>Nick</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>App token (<code>xapp-...</code>) for Socket Mode</td>
+<td>Bot nickname</td>
+</tr>
+<tr>
+<td><code>User</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Username (defaults to Nick)</td>
+</tr>
+<tr>
+<td><code>RealName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Real name field (defaults to Nick)</td>
+</tr>
+<tr>
+<td><code>Password</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>NickServ password for authentication</td>
+</tr>
+<tr>
+<td><code>Channels</code></td>
+<td><code>[]string</code></td>
+<td>No</td>
+<td>Channels to join on connect</td>
+</tr>
+<tr>
+<td><code>UseTLS</code></td>
+<td><code>bool</code></td>
+<td>No</td>
+<td>Use TLS encryption (default: true)</td>
 </tr>
 <tr>
 <td><code>Logger</code></td>
@@ -1611,102 +1626,44 @@
 </tr>
 </tbody>
 </table>
-<h2 id="creating-a-slack-app">Creating a Slack App<a class="headerlink" href="#creating-a-slack-app" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Go to <a href="https://api.slack.com/apps">Slack API</a></li>
-<li>Click <strong>Create New App</strong> &gt; <strong>From scratch</strong></li>
-<li>Name your app and select a workspace</li>
-</ol>
-<h3 id="enable-socket-mode">Enable Socket Mode<a class="headerlink" href="#enable-socket-mode" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Go to <strong>Socket Mode</strong> in sidebar</li>
-<li>Enable Socket Mode</li>
-<li>Create an App-Level Token with <code>connections:write</code> scope</li>
-<li>Save the token (<code>xapp-...</code>)</li>
-</ol>
-<h3 id="bot-token-scopes">Bot Token Scopes<a class="headerlink" href="#bot-token-scopes" title="Permanent link">&para;</a></h3>
-<p>Go to <strong>OAuth &amp; Permissions</strong> and add these scopes:</p>
+<h2 id="irc-networks">IRC Networks<a class="headerlink" href="#irc-networks" title="Permanent link">&para;</a></h2>
+<p>Common public IRC networks:</p>
 <table>
 <thead>
 <tr>
-<th>Scope</th>
-<th>Purpose</th>
+<th>Network</th>
+<th>Server</th>
+<th>TLS Port</th>
+<th>Website</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>chat:write</code></td>
-<td>Send messages</td>
+<td>Libera.Chat</td>
+<td><code>irc.libera.chat</code></td>
+<td>6697</td>
+<td><a href="https://libera.chat">libera.chat</a></td>
 </tr>
 <tr>
-<td><code>channels:history</code></td>
-<td>Read channel messages</td>
+<td>OFTC</td>
+<td><code>irc.oftc.net</code></td>
+<td>6697</td>
+<td><a href="https://www.oftc.net">oftc.net</a></td>
 </tr>
 <tr>
-<td><code>groups:history</code></td>
-<td>Read private channel messages</td>
+<td>EFnet</td>
+<td><code>irc.efnet.org</code></td>
+<td>6697</td>
+<td><a href="http://www.efnet.org">efnet.org</a></td>
 </tr>
 <tr>
-<td><code>im:history</code></td>
-<td>Read DM messages</td>
-</tr>
-<tr>
-<td><code>mpim:history</code></td>
-<td>Read group DM messages</td>
-</tr>
-<tr>
-<td><code>users:read</code></td>
-<td>Get user information</td>
-</tr>
-<tr>
-<td><code>reactions:read</code></td>
-<td>Read reactions</td>
+<td>IRCnet</td>
+<td><code>open.ircnet.net</code></td>
+<td>6697</td>
+<td><a href="http://www.ircnet.org">ircnet.org</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="event-subscriptions">Event Subscriptions<a class="headerlink" href="#event-subscriptions" title="Permanent link">&para;</a></h3>
-<p>Go to <strong>Event Subscriptions</strong> and subscribe to:</p>
-<table>
-<thead>
-<tr>
-<th>Event</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>message.channels</code></td>
-<td>Messages in public channels</td>
-</tr>
-<tr>
-<td><code>message.groups</code></td>
-<td>Messages in private channels</td>
-</tr>
-<tr>
-<td><code>message.im</code></td>
-<td>Direct messages</td>
-</tr>
-<tr>
-<td><code>message.mpim</code></td>
-<td>Group direct messages</td>
-</tr>
-<tr>
-<td><code>reaction_added</code></td>
-<td>Reactions added to messages</td>
-</tr>
-<tr>
-<td><code>member_joined_channel</code></td>
-<td>Users joining channels</td>
-</tr>
-</tbody>
-</table>
-<h3 id="install-to-workspace">Install to Workspace<a class="headerlink" href="#install-to-workspace" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Go to <strong>Install App</strong></li>
-<li>Click <strong>Install to Workspace</strong></li>
-<li>Authorize the app</li>
-<li>Copy the Bot Token (<code>xoxb-...</code>)</li>
-</ol>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="basic-setup">Basic Setup<a class="headerlink" href="#basic-setup" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -1717,206 +1674,190 @@
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s">&quot;os&quot;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/provider&quot;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/providers/slack&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/providers/irc&quot;</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">()</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slack</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">slack</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="nx">BotToken</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;SLACK_BOT_TOKEN&quot;</span><span class="p">),</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nx">AppToken</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;SLACK_APP_TOKEN&quot;</span><span class="p">),</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nx">Logger</span><span class="p">:</span><span class="w">   </span><span class="nx">logger</span><span class="p">,</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">irc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">irc</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="nx">Server</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;irc.libera.chat:6697&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nx">Nick</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;mybot&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nx">Password</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;IRC_PASSWORD&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nx">Channels</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;#mychannel&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nx">UseTLS</span><span class="p">:</span><span class="w">   </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="nx">Logger</span><span class="p">:</span><span class="w">   </span><span class="nx">logger</span><span class="p">,</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">            </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello from Slack!&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="p">})</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">ConnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">DisconnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{}</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="p">}</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;irc&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">            </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello from IRC!&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="p">})</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">ConnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">DisconnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="sending-messages">Sending Messages<a class="headerlink" href="#sending-messages" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Simple message</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello, Slack!&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Send to channel</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;irc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;#mychannel&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello, channel!&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">})</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">// Reply in thread</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is a thread reply&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="p">:</span><span class="w"> </span><span class="nx">parentMessageTS</span><span class="p">,</span><span class="w">  </span><span class="c1">// Thread timestamp</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">})</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">// Send direct message</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;irc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;username&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello via DM!&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="sending-media">Sending Media<a class="headerlink" href="#sending-media" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Send a file</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Here&#39;s the report:&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeDocument</span><span class="p">,</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">fileBytes</span><span class="p">,</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;report.pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">})</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">// Send an image</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">imageBytes</span><span class="p">,</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;screenshot.png&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;image/png&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="p">})</span>
+<h3 id="joining-channels">Joining Channels<a class="headerlink" href="#joining-channels" title="Permanent link">&para;</a></h3>
+<p>Channels specified in config are joined automatically on connect. You can also join dynamically:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Type assertion to access IRC-specific methods</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">ircProvider</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">p</span><span class="p">.(</span><span class="o">*</span><span class="nx">irc</span><span class="p">.</span><span class="nx">Provider</span><span class="p">);</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">ircProvider</span><span class="p">.</span><span class="nx">JoinChannel</span><span class="p">(</span><span class="s">&quot;#newchannel&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">ircProvider</span><span class="p">.</span><span class="nx">PartChannel</span><span class="p">(</span><span class="s">&quot;#oldchannel&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="message-mapping">Message Mapping<a class="headerlink" href="#message-mapping" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Slack</th>
+<th>IRC</th>
 <th>OmniChat</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Channel ID</td>
+<td>Target (channel/nick)</td>
 <td><code>ChatID</code></td>
 </tr>
 <tr>
-<td>Message TS</td>
+<td>Timestamp (nanoseconds)</td>
 <td><code>ID</code></td>
 </tr>
 <tr>
-<td>User ID</td>
-<td><code>SenderID</code></td>
+<td>Sender nick</td>
+<td><code>SenderID</code>, <code>SenderName</code></td>
 </tr>
 <tr>
-<td>User Name</td>
-<td><code>SenderName</code></td>
-</tr>
-<tr>
-<td>Text</td>
+<td>Message text</td>
 <td><code>Content</code></td>
 </tr>
 <tr>
-<td>Thread TS</td>
-<td><code>ReplyTo</code></td>
+<td>Channel (#prefix)</td>
+<td><code>ChatType = ChatTypeChannel</code></td>
 </tr>
 <tr>
-<td>Files</td>
-<td><code>Media</code></td>
-</tr>
-<tr>
-<td>IM Channel</td>
-<td><code>IsDM = true</code></td>
+<td>Private message</td>
+<td><code>ChatType = ChatTypeDM</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="event-handling">Event Handling<a class="headerlink" href="#event-handling" title="Permanent link">&para;</a></h2>
-<p>The provider handles these Slack events:</p>
-<h3 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h3>
+<p>The provider handles these IRC events:</p>
+<h3 id="messages-privmsg">Messages (PRIVMSG)<a class="headerlink" href="#messages-privmsg" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">// msg.Content contains the message text</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// msg.ChatID is the channel ID</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">// msg.ReplyTo is set if this is a thread reply</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">// msg.ChatID is &quot;#channel&quot; for channels, &quot;nick&quot; for DMs</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// msg.ChatType is ChatTypeChannel or ChatTypeDM</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">// msg.Content is the message text</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="reactions">Reactions<a class="headerlink" href="#reactions" title="Permanent link">&para;</a></h3>
-<p>Reactions are delivered as messages with special content:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c1">// This is a reaction</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nx">emoji</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Trim</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Reaction %s added&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">emoji</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">})</span>
+<h3 id="joinpart-events">Join/Part Events<a class="headerlink" href="#joinpart-events" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnEvent</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Type</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">EventTypeMemberJoined</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nx">nick</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;nick&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s joined %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nick</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">EventTypeMemberLeft</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="nx">nick</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;nick&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="nx">reason</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;reason&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%s left %s: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nick</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">,</span><span class="w"> </span><span class="nx">reason</span><span class="p">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="member-joins">Member Joins<a class="headerlink" href="#member-joins" title="Permanent link">&para;</a></h3>
-<p>Member join events are delivered as system messages.</p>
-<h2 id="channel-types">Channel Types<a class="headerlink" href="#channel-types" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th><code>IsDM</code></th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Public channel</td>
-<td><code>false</code></td>
-<td><code>C...</code> prefix</td>
-</tr>
-<tr>
-<td>Private channel</td>
-<td><code>false</code></td>
-<td><code>G...</code> prefix</td>
-</tr>
-<tr>
-<td>Direct message</td>
-<td><code>true</code></td>
-<td><code>D...</code> prefix</td>
-</tr>
-<tr>
-<td>Group DM</td>
-<td><code>true</code></td>
-<td><code>G...</code> prefix</td>
-</tr>
-</tbody>
-</table>
+<h2 id="nickserv-authentication">NickServ Authentication<a class="headerlink" href="#nickserv-authentication" title="Permanent link">&para;</a></h2>
+<p>Most IRC networks support NickServ for nickname registration:</p>
+<h3 id="register-a-nickname-manual">Register a Nickname (Manual)<a class="headerlink" href="#register-a-nickname-manual" title="Permanent link">&para;</a></h3>
+<p>Connect with a regular IRC client and register:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/msg NickServ REGISTER password email@example.com
+</code></pre></div>
+<h3 id="configure-password">Configure Password<a class="headerlink" href="#configure-password" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">irc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">irc</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nx">Server</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;irc.libera.chat:6697&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nx">Nick</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;registeredbot&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nx">Password</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;IRC_PASSWORD&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">})</span>
+</code></pre></div>
+<p>The provider sends the password during connection for NickServ identification.</p>
+<h2 id="tls-configuration">TLS Configuration<a class="headerlink" href="#tls-configuration" title="Permanent link">&para;</a></h2>
+<p>TLS is enabled by default. To disable (not recommended):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">irc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">irc</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nx">Server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;irc.example.com:6667&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Non-TLS port</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nx">Nick</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;mybot&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nx">UseTLS</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">})</span>
+</code></pre></div>
+<p>Standard ports:</p>
+<ul>
+<li>TLS: 6697</li>
+<li>Unencrypted: 6667</li>
+</ul>
+<h2 id="message-length-limits">Message Length Limits<a class="headerlink" href="#message-length-limits" title="Permanent link">&para;</a></h2>
+<p>IRC has line length limits (~512 bytes including protocol overhead). The provider automatically splits long messages at word boundaries.</p>
 <h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-your-bot-token-here
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-your-app-token-here
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">IRC_SERVER</span><span class="o">=</span>irc.libera.chat:6697
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">IRC_NICK</span><span class="o">=</span>mybot
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">IRC_PASSWORD</span><span class="o">=</span>nickserv-password
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">IRC_CHANNELS</span><span class="o">=</span><span class="c1">#channel1,#channel2</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="bot-not-receiving-messages">Bot not receiving messages<a class="headerlink" href="#bot-not-receiving-messages" title="Permanent link">&para;</a></h3>
+<h3 id="connection-refused">Connection refused<a class="headerlink" href="#connection-refused" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Verify Socket Mode is enabled</li>
-<li>Check Event Subscriptions are configured</li>
-<li>Ensure bot is invited to channels (<code>/invite @botname</code>)</li>
-<li>Verify App Token has <code>connections:write</code> scope</li>
+<li>Verify server address and port</li>
+<li>Check if TLS is required (most networks require TLS on port 6697)</li>
+<li>Ensure no firewall blocking</li>
 </ol>
-<h3 id="permission-errors">Permission errors<a class="headerlink" href="#permission-errors" title="Permanent link">&para;</a></h3>
+<h3 id="nickname-already-in-use">Nickname already in use<a class="headerlink" href="#nickname-already-in-use" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Check OAuth scopes in app settings</li>
-<li>Reinstall app after adding scopes</li>
-<li>Verify bot is a member of the channel</li>
+<li>Choose a different nickname</li>
+<li>If you own the nickname, configure NickServ password</li>
 </ol>
-<h3 id="connection-drops">Connection drops<a class="headerlink" href="#connection-drops" title="Permanent link">&para;</a></h3>
-<p>Socket Mode reconnects automatically. For persistent issues:</p>
+<h3 id="cannot-join-channel">Cannot join channel<a class="headerlink" href="#cannot-join-channel" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Check App Token is valid</li>
-<li>Verify network connectivity</li>
-<li>Check Slack status page</li>
+<li>Channel may be invite-only (+i)</li>
+<li>Channel may require registration (+r)</li>
+<li>Contact channel operators</li>
 </ol>
-<h3 id="rate-limiting">Rate limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h3>
-<p>Slack has rate limits (~1 message/second per channel). The provider handles backoff automatically.</p>
+<h3 id="messages-not-received">Messages not received<a class="headerlink" href="#messages-not-received" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Verify bot has joined the channel</li>
+<li>Check channel modes</li>
+<li>Review logs for errors</li>
+</ol>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
-<li>No support for Block Kit (rich messages) through OmniChat interface</li>
-<li>Reactions are simplified to emoji strings</li>
-<li>Thread replies require parent message timestamp</li>
+<li>No message editing or deletion (IRC protocol limitation)</li>
+<li>No threading or replies</li>
+<li>No native media support</li>
+<li>No read receipts or typing indicators</li>
+<li>Message length limits (~400 characters per line)</li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../gmail/">Gmail</a> - Add email support</li>
 <li><a href="../../reference/router/">Router</a> - Message routing</li>
+<li><a href="../../reference/testing/">Testing</a> - Test your implementation</li>
 </ul>
 
 

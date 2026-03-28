@@ -305,7 +305,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../releases/v0.4.0/" class="md-tabs__link">
+        <a href="../releases/v0.5.0/" class="md-tabs__link">
           
   
   
@@ -749,6 +749,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="irc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IRC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -921,6 +944,29 @@
             Releases
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../releases/v0.5.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    v0.5.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1227,6 +1273,12 @@
 <td>Email</td>
 <td>OAuth2</td>
 </tr>
+<tr>
+<td><a href="irc/">IRC</a></td>
+<td><code>providers/irc</code></td>
+<td>Chat</td>
+<td>NickServ (optional)</td>
+</tr>
 </tbody>
 </table>
 <h2 id="provider-interface">Provider Interface<a class="headerlink" href="#provider-interface" title="Permanent link">&para;</a></h2>
@@ -1311,11 +1363,13 @@
 <th>WhatsApp</th>
 <th>Slack</th>
 <th>Gmail</th>
+<th>IRC</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Text messages</td>
+<td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1329,12 +1383,14 @@
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Voice messages</td>
 <td>No</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -1345,6 +1401,7 @@
 <td>Yes</td>
 <td>Yes</td>
 <td>No</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Threads</td>
@@ -1353,6 +1410,7 @@
 <td>Yes</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Typing indicators</td>
@@ -1361,12 +1419,14 @@
 <td>Yes</td>
 <td>No</td>
 <td>No</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Read receipts</td>
 <td>No</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -1391,6 +1451,7 @@
 <li><a href="whatsapp/">WhatsApp</a> - WhatsApp Web setup</li>
 <li><a href="slack/">Slack</a> - Slack app setup</li>
 <li><a href="gmail/">Gmail</a> - Gmail API setup</li>
+<li><a href="irc/">IRC</a> - IRC server connection</li>
 </ul>
 
 
