@@ -11,7 +11,7 @@ require (
 	go.mau.fi/whatsmeow v0.0.0-20260227112304-c9652e4448a2
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
-	modernc.org/sqlite v1.47.0
+	modernc.org/sqlite v1.48.0
 )
 
 require (
