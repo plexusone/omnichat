@@ -8,6 +8,22 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.5.0",
+      "date": "2026-03-28",
+      "highlights": [
+        { "description": "IRC provider for channel and direct message support" }
+      ],
+      "added": [
+        { "description": "IRC provider using ergochat/irc-go v0.6.0 with TLS, NickServ auth, and multi-channel support", "commit": "ebc0111" }
+      ],
+      "dependencies": [
+        { "description": "Add github.com/ergochat/irc-go v0.6.0", "commit": "ebc0111" },
+        { "description": "Bump go.mau.fi/whatsmeow to latest", "commit": "ebc0111" },
+        { "description": "Bump cloud.google.com/go/auth to v0.19.0", "commit": "ebc0111" },
+        { "description": "Bump google.golang.org/api to v0.273.0", "commit": "ebc0111" }
+      ]
+    },
+    {
       "version": "v0.4.0",
       "date": "2026-03-22",
       "highlights": [

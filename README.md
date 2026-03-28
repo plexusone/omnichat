@@ -1,7 +1,5 @@
 # OmniChat
 
-# OmniSerp Multi-Search Client and MCP Server
-
 [![Go CI][go-ci-svg]][go-ci-url]
 [![Go Lint][go-lint-svg]][go-lint-url]
 [![Go SAST][go-sast-svg]][go-sast-url]
@@ -46,6 +44,7 @@ A Go library providing a unified interface for messaging platforms.
 | WhatsApp | `providers/whatsapp` | QR auth, voice notes, media |
 | Slack | `providers/slack` | Socket Mode, channels, threads |
 | Gmail | `providers/email/gmail` | OAuth2, HTML/Markdown email |
+| IRC | `providers/irc` | TLS, NickServ auth, multi-channel |
 
 ## Installation
 
@@ -141,6 +140,21 @@ p, err := whatsapp.New(whatsapp.Config{
         // Display QR code for authentication
         fmt.Println("Scan this QR code:", qr)
     },
+})
+```
+
+### IRC
+
+```go
+import "github.com/plexusone/omnichat/providers/irc"
+
+p, err := irc.New(irc.Config{
+    Server:   "irc.libera.chat:6697",
+    Nick:     "mybot",
+    Password: os.Getenv("IRC_PASSWORD"), // NickServ password
+    Channels: []string{"#mychannel"},
+    UseTLS:   true,
+    Logger:   slog.Default(),
 })
 ```
 
