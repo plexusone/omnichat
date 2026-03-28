@@ -135,7 +135,10 @@ func (p *Provider) Connect(ctx context.Context) error {
 			if !strings.HasPrefix(channel, "#") {
 				channel = "#" + channel
 			}
-			conn.Join(channel)
+			if err := conn.Join(channel); err != nil {
+				p.logger.Error("failed to join channel", "channel", channel, "error", err)
+				continue
+			}
 			p.logger.Info("joining channel", "channel", channel)
 		}
 	})
@@ -242,7 +245,9 @@ func (p *Provider) Send(ctx context.Context, chatID string, msg provider.Outgoin
 				line = ""
 			}
 
-			p.conn.Privmsg(target, chunk)
+			if err := p.conn.Privmsg(target, chunk); err != nil {
+				return fmt.Errorf("send message: %w", err)
+			}
 		}
 	}
 
@@ -513,7 +518,9 @@ func (p *Provider) JoinChannel(channel string) error {
 		channel = "#" + channel
 	}
 
-	p.conn.Join(channel)
+	if err := p.conn.Join(channel); err != nil {
+		return fmt.Errorf("join channel %s: %w", channel, err)
+	}
 	p.logger.Info("joining channel", "channel", channel)
 	return nil
 }
@@ -531,7 +538,9 @@ func (p *Provider) PartChannel(channel string, reason string) error {
 		channel = "#" + channel
 	}
 
-	p.conn.Part(channel)
+	if err := p.conn.Part(channel); err != nil {
+		return fmt.Errorf("part channel %s: %w", channel, err)
+	}
 	p.logger.Info("leaving channel", "channel", channel)
 	return nil
 }
