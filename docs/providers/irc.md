@@ -116,8 +116,12 @@ Channels specified in config are joined automatically on connect. You can also j
 ```go
 // Type assertion to access IRC-specific methods
 if ircProvider, ok := p.(*irc.Provider); ok {
-    ircProvider.JoinChannel("#newchannel")
-    ircProvider.PartChannel("#oldchannel", "")
+    if err := ircProvider.JoinChannel("#newchannel"); err != nil {
+        log.Printf("failed to join channel: %v", err)
+    }
+    if err := ircProvider.PartChannel("#oldchannel", ""); err != nil {
+        log.Printf("failed to leave channel: %v", err)
+    }
 }
 ```
 
