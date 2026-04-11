@@ -8,7 +8,7 @@ require (
 	github.com/grokify/goauth v0.23.29
 	github.com/grokify/gogoogle v0.9.0
 	github.com/mdp/qrterminal/v3 v3.2.1
-	github.com/slack-go/slack v0.20.0
+	github.com/slack-go/slack v0.21.1
 	go.mau.fi/whatsmeow v0.0.0-20260327181659-02ec817e7cf4
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
