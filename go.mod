@@ -10,10 +10,10 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/twilio-go v0.4.0
 	github.com/slack-go/slack v0.22.0
-	go.mau.fi/whatsmeow v0.0.0-20260410162419-b95d92207080
+	go.mau.fi/whatsmeow v0.0.0-20260416104156-3ff20cd3462a
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
-	modernc.org/sqlite v1.49.0
+	modernc.org/sqlite v1.49.1
 )
 
 require (
@@ -33,8 +33,8 @@ require (
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/googleapis/enterprise-certificate-proxy v0.3.14 // indirect
-	github.com/googleapis/gax-go/v2 v2.21.0 // indirect
+	github.com/googleapis/enterprise-certificate-proxy v0.3.15 // indirect
+	github.com/googleapis/gax-go/v2 v2.22.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/grokify/mogo v0.74.1 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
@@ -51,7 +51,7 @@ require (
 	github.com/twilio/twilio-go v1.30.5 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.32 // indirect
 	go.mau.fi/libsignal v0.2.1 // indirect
-	go.mau.fi/util v0.9.7 // indirect
+	go.mau.fi/util v0.9.8 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.68.0 // indirect
 	go.opentelemetry.io/otel v1.43.0 // indirect
@@ -64,8 +64,8 @@ require (
 	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/term v0.42.0 // indirect
 	golang.org/x/text v0.36.0 // indirect
-	google.golang.org/api v0.275.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260406210006-6f92a3bedf2d // indirect
+	google.golang.org/api v0.276.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260414002931-afd174a4e478 // indirect
 	google.golang.org/grpc v1.80.0 // indirect
 	modernc.org/libc v1.72.0 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
