@@ -12,6 +12,7 @@ OmniChat supports multiple messaging platforms through a unified provider interf
 | [Slack](slack.md) | `providers/slack` | Chat | OAuth tokens |
 | [Gmail](gmail.md) | `providers/email/gmail` | Email | OAuth2 |
 | [IRC](irc.md) | `providers/irc` | Chat | NickServ (optional) |
+| [Twilio](twilio.md) | `providers/twilio` | SMS | Account SID/Auth Token |
 
 ## Provider Interface
 
@@ -105,15 +106,15 @@ router.ConnectAll(ctx)
 
 Each provider may support additional features:
 
-| Feature | Discord | Telegram | WhatsApp | Slack | Gmail | IRC |
-|---------|---------|----------|----------|-------|-------|-----|
-| Text messages | Yes | Yes | Yes | Yes | Yes | Yes |
-| Media attachments | Yes | Yes | Yes | Yes | Yes | No |
-| Voice messages | No | Yes | Yes | No | No | No |
-| Reactions | Yes | Yes | Yes | Yes | No | No |
-| Threads | Yes | Yes | Yes | Yes | Yes | No |
-| Typing indicators | Yes | Yes | Yes | No | No | No |
-| Read receipts | No | Yes | Yes | No | No | No |
+| Feature | Discord | Telegram | WhatsApp | Slack | Gmail | IRC | Twilio |
+|---------|---------|----------|----------|-------|-------|-----|--------|
+| Text messages | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Media attachments | Yes | Yes | Yes | Yes | Yes | No | No |
+| Voice messages | No | Yes | Yes | No | No | No | No |
+| Reactions | Yes | Yes | Yes | Yes | No | No | No |
+| Threads | Yes | Yes | Yes | Yes | Yes | No | No |
+| Typing indicators | Yes | Yes | Yes | No | No | No | No |
+| Read receipts | No | Yes | Yes | No | No | No | No |
 
 ## Error Handling
 
@@ -139,3 +140,4 @@ if err != nil {
 - [Slack](slack.md) - Slack app setup
 - [Gmail](gmail.md) - Gmail API setup
 - [IRC](irc.md) - IRC server connection
+- [Twilio](twilio.md) - Twilio SMS setup

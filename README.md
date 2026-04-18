@@ -45,6 +45,7 @@ A Go library providing a unified interface for messaging platforms.
 | Slack | `providers/slack` | Socket Mode, channels, threads |
 | Gmail | `providers/email/gmail` | OAuth2, HTML/Markdown email |
 | IRC | `providers/irc` | TLS, NickServ auth, multi-channel |
+| Twilio | `providers/twilio` | SMS messaging, webhooks |
 
 ## Installation
 
@@ -156,6 +157,22 @@ p, err := irc.New(irc.Config{
     UseTLS:   true,
     Logger:   slog.Default(),
 })
+```
+
+### Twilio
+
+```go
+import "github.com/plexusone/omnichat/providers/twilio"
+
+p, err := twilio.New(twilio.Config{
+    AccountSID:  os.Getenv("TWILIO_ACCOUNT_SID"),
+    AuthToken:   os.Getenv("TWILIO_AUTH_TOKEN"),
+    PhoneNumber: os.Getenv("TWILIO_PHONE_NUMBER"), // Your Twilio number
+    Logger:      slog.Default(),
+})
+
+// For receiving SMS, set up a webhook handler
+http.Handle("/sms", p.WebhookHandler())
 ```
 
 ## Router
