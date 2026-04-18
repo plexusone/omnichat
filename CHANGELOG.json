@@ -8,6 +8,26 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.6.0",
+      "date": "2026-04-18",
+      "highlights": [
+        { "description": "Twilio SMS provider for omnichat integration" }
+      ],
+      "added": [
+        { "description": "Twilio SMS provider using `twilio-go/omnichat` for SMS messaging", "commit": "cafa42b" }
+      ],
+      "fixed": [
+        { "description": "Handle `socketClient.Ack` errors in Slack event handler instead of silently discarding", "commit": "c865ffb" }
+      ],
+      "documentation": [
+        { "description": "Apply PlexusOne unified theme with dark mode and navigation header", "commit": "870e1bc" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/slack-go/slack` from 0.20.0 to 0.21.1", "commit": "19e1dad" },
+        { "description": "Bump `modernc.org/sqlite` from 1.48.0 to 1.49.0", "commit": "e3dfb90" }
+      ]
+    },
+    {
       "version": "v0.5.0",
       "date": "2026-03-28",
       "highlights": [
