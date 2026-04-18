@@ -175,17 +175,23 @@ func (p *Provider) handleEvent(ctx context.Context, evt socketmode.Event) {
 		}
 
 		// Acknowledge the event
-		p.socketClient.Ack(*evt.Request)
+		if err := p.socketClient.Ack(*evt.Request); err != nil {
+			p.logger.Error("failed to ack events API event", "error", err)
+		}
 
 		p.handleEventsAPIEvent(ctx, eventsAPIEvent)
 
 	case socketmode.EventTypeSlashCommand:
 		// Could handle slash commands if needed
-		p.socketClient.Ack(*evt.Request)
+		if err := p.socketClient.Ack(*evt.Request); err != nil {
+			p.logger.Error("failed to ack slash command", "error", err)
+		}
 
 	case socketmode.EventTypeInteractive:
 		// Could handle interactive components if needed
-		p.socketClient.Ack(*evt.Request)
+		if err := p.socketClient.Ack(*evt.Request); err != nil {
+			p.logger.Error("failed to ack interactive event", "error", err)
+		}
 	}
 }
 
