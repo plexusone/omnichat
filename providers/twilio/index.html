@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://plexusone.github.io/omnichat/providers/discord/">
+        <link rel="canonical" href="https://plexusone.github.io/omnichat/providers/twilio/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../irc/">
       
       
-        <link rel="next" href="../telegram/">
+        <link rel="next" href="../../reference/router/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Discord - OmniChat</title>
+        <title>Twilio - OmniChat</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#discord" class="md-skip">
+        <a href="#twilio" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Discord
+              Twilio
             
           </span>
         </div>
@@ -375,32 +375,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Discord
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../discord/" class="md-nav__link">
         
   
   
@@ -411,197 +389,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-options" class="md-nav__link">
-    <span class="md-ellipsis">
-      Config Options
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-a-bot-token" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting a Bot Token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bot-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bot Permissions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Setup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sending-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sending Media
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reply-to-messages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reply to Messages
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#message-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      Message Mapping
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#filtering-messages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Filtering Messages
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment Variables
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bot-not-receiving-messages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bot not receiving messages
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#permission-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permission errors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rate limiting
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -726,10 +513,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../twilio/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Twilio
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -740,6 +549,212 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config Options
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#twilio-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Twilio Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Twilio Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-your-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your Credentials
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-sms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending SMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receiving-sms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving SMS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#webhook-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webhook Security
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sms-not-sending" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMS not sending
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhooks-not-receiving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Webhooks not receiving
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone-number-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phone number format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1145,20 +1160,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#getting-a-bot-token" class="md-nav__link">
+  <a href="#twilio-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting a Bot Token
+      Twilio Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Twilio Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-your-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your Credentials
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#bot-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bot Permissions
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1182,18 +1203,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sending-media" class="md-nav__link">
+  <a href="#sending-sms" class="md-nav__link">
     <span class="md-ellipsis">
-      Sending Media
+      Sending SMS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#reply-to-messages" class="md-nav__link">
+  <a href="#receiving-sms" class="md-nav__link">
     <span class="md-ellipsis">
-      Reply to Messages
+      Receiving SMS
     </span>
   </a>
   
@@ -1214,18 +1235,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#filtering-messages" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Filtering Messages
+      Environment Variables
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
+  <a href="#webhook-security" class="md-nav__link">
     <span class="md-ellipsis">
-      Environment Variables
+      Webhook Security
     </span>
   </a>
   
@@ -1242,27 +1263,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bot-not-receiving-messages" class="md-nav__link">
+  <a href="#sms-not-sending" class="md-nav__link">
     <span class="md-ellipsis">
-      Bot not receiving messages
+      SMS not sending
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#permission-errors" class="md-nav__link">
+  <a href="#webhooks-not-receiving" class="md-nav__link">
     <span class="md-ellipsis">
-      Permission errors
+      Webhooks not receiving
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rate-limiting" class="md-nav__link">
+  <a href="#phone-number-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Rate limiting
+      Phone number format
     </span>
   </a>
   
@@ -1270,6 +1291,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
   
 </li>
       
@@ -1301,19 +1331,20 @@
   
 
 
-<h1 id="discord">Discord<a class="headerlink" href="#discord" title="Permanent link">&para;</a></h1>
-<p>The Discord provider uses <a href="https://github.com/bwmarrin/discordgo">discordgo</a> to connect to Discord's Gateway API.</p>
+<h1 id="twilio">Twilio<a class="headerlink" href="#twilio" title="Permanent link">&para;</a></h1>
+<p>The Twilio provider uses <a href="https://github.com/plexusone/twilio-go">twilio-go</a> for SMS messaging via Twilio's REST API.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omnichat/providers/discord
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omnichat/providers/twilio
 </code></pre></div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omnichat/providers/discord&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omnichat/providers/twilio&quot;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">discord</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">discord</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">Token</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;Bot MTIzNDU2Nzg5...&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Bot token (with &quot;Bot &quot; prefix)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">GuildID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123456789012345678&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// Optional: limit to one server</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">Logger</span><span class="p">:</span><span class="w">  </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">(),</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">})</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">twilio</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">twilio</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">AccountSID</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;ACxxxxxxxx&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">AuthToken</span><span class="p">:</span><span class="w">   </span><span class="s">&quot;your-auth-token&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">PhoneNumber</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;+15551234567&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Your Twilio phone number</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">Logger</span><span class="p">:</span><span class="w">      </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">(),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">})</span>
 </code></pre></div>
 <h3 id="config-options">Config Options<a class="headerlink" href="#config-options" title="Permanent link">&para;</a></h3>
 <table>
@@ -1327,16 +1358,22 @@
 </thead>
 <tbody>
 <tr>
-<td><code>Token</code></td>
+<td><code>AccountSID</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Discord bot token</td>
+<td>Twilio Account SID</td>
 </tr>
 <tr>
-<td><code>GuildID</code></td>
+<td><code>AuthToken</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Twilio Auth Token</td>
+</tr>
+<tr>
+<td><code>PhoneNumber</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td>Restrict to specific guild</td>
+<td>Default outbound phone number (E.164 format)</td>
 </tr>
 <tr>
 <td><code>Logger</code></td>
@@ -1346,29 +1383,17 @@
 </tr>
 </tbody>
 </table>
-<h2 id="getting-a-bot-token">Getting a Bot Token<a class="headerlink" href="#getting-a-bot-token" title="Permanent link">&para;</a></h2>
+<h2 id="twilio-setup">Twilio Setup<a class="headerlink" href="#twilio-setup" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Go to <a href="https://discord.com/developers/applications">Discord Developer Portal</a></li>
-<li>Click <strong>New Application</strong></li>
-<li>Go to <strong>Bot</strong> section</li>
-<li>Click <strong>Reset Token</strong> to generate a new token</li>
-<li>Enable required <strong>Privileged Gateway Intents</strong>:</li>
-<li>Message Content Intent (to read message text)</li>
-<li>Server Members Intent (optional, for member events)</li>
+<li>Sign up at <a href="https://www.twilio.com/">Twilio</a></li>
+<li>Get your Account SID and Auth Token from the Console</li>
+<li>Buy or configure a phone number with SMS capability</li>
 </ol>
-<h2 id="bot-permissions">Bot Permissions<a class="headerlink" href="#bot-permissions" title="Permanent link">&para;</a></h2>
-<p>Your bot needs these permissions:</p>
-<ul>
-<li><strong>Send Messages</strong> - To send responses</li>
-<li><strong>Read Message History</strong> - To read messages</li>
-<li><strong>Attach Files</strong> - To send media</li>
-</ul>
-<p>Generate an invite URL:</p>
+<h3 id="finding-your-credentials">Finding Your Credentials<a class="headerlink" href="#finding-your-credentials" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Go to <strong>OAuth2 &gt; URL Generator</strong></li>
-<li>Select scopes: <code>bot</code>, <code>applications.commands</code></li>
-<li>Select permissions needed</li>
-<li>Use the generated URL to invite the bot</li>
+<li>Go to <a href="https://console.twilio.com/">Twilio Console</a></li>
+<li>Your <strong>Account SID</strong> and <strong>Auth Token</strong> are on the dashboard</li>
+<li>Click <strong>Phone Numbers</strong> &gt; <strong>Manage</strong> &gt; <strong>Active numbers</strong> for your phone numbers</li>
 </ol>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="basic-setup">Basic Setup<a class="headerlink" href="#basic-setup" title="Permanent link">&para;</a></h3>
@@ -1377,145 +1402,127 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="s">&quot;context&quot;</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="s">&quot;log/slog&quot;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s">&quot;os&quot;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/provider&quot;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/providers/discord&quot;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">)</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">()</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">discord</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">discord</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="nx">Token</span><span class="p">:</span><span class="w">  </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DISCORD_TOKEN&quot;</span><span class="p">),</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nx">Logger</span><span class="p">:</span><span class="w"> </span><span class="nx">logger</span><span class="p">,</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="s">&quot;os&quot;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/provider&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="s">&quot;github.com/plexusone/omnichat/providers/twilio&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">slog</span><span class="p">.</span><span class="nx">Default</span><span class="p">()</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">twilio</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">twilio</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nx">AccountSID</span><span class="p">:</span><span class="w">  </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="nx">AuthToken</span><span class="p">:</span><span class="w">   </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nx">PhoneNumber</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_PHONE_NUMBER&quot;</span><span class="p">),</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nx">Logger</span><span class="p">:</span><span class="w">      </span><span class="nx">logger</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;discord&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">            </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello from Discord!&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="p">})</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">ConnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">DisconnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{}</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="p">}</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">SenderID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">            </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Thanks for your message!&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="w">        </span><span class="p">})</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">ConnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">DisconnectAll</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">    </span><span class="c1">// Set up webhook for incoming SMS</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/sms&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">WebhookHandler</span><span class="p">())</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="sending-media">Sending Media<a class="headerlink" href="#sending-media" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Send an image</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;discord&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Check out this image!&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nx">URL</span><span class="p">:</span><span class="w">      </span><span class="s">&quot;https://example.com/image.png&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;image.png&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">})</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// Send a file</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;discord&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeDocument</span><span class="p">,</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">fileBytes</span><span class="p">,</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;document.pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">})</span>
+<h3 id="sending-sms">Sending SMS<a class="headerlink" href="#sending-sms" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Send to a phone number</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello from OmniChat!&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="reply-to-messages">Reply to Messages<a class="headerlink" href="#reply-to-messages" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;discord&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is a reply!&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nx">ReplyTo</span><span class="p">:</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="w">  </span><span class="c1">// Reply to the original message</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">})</span>
+<h3 id="receiving-sms">Receiving SMS<a class="headerlink" href="#receiving-sms" title="Permanent link">&para;</a></h3>
+<p>Incoming SMS messages are received via Twilio webhooks. Configure your Twilio phone number to POST to your webhook endpoint:</p>
+<ol>
+<li>Go to <strong>Phone Numbers</strong> &gt; <strong>Manage</strong> &gt; <strong>Active numbers</strong></li>
+<li>Click your phone number</li>
+<li>Under <strong>Messaging</strong>, set the webhook URL to your endpoint (e.g., <code>https://yourapp.com/sms</code>)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// The webhook handler is provided by the provider</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/sms&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">WebhookHandler</span><span class="p">())</span>
 </code></pre></div>
 <h2 id="message-mapping">Message Mapping<a class="headerlink" href="#message-mapping" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Discord</th>
+<th>Twilio</th>
 <th>OmniChat</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Channel ID</td>
-<td><code>ChatID</code></td>
-</tr>
-<tr>
-<td>Message ID</td>
+<td>MessageSid</td>
 <td><code>ID</code></td>
 </tr>
 <tr>
-<td>Author ID</td>
+<td>From</td>
 <td><code>SenderID</code></td>
 </tr>
 <tr>
-<td>Author Username</td>
-<td><code>SenderName</code></td>
+<td>To</td>
+<td><code>ChatID</code></td>
 </tr>
 <tr>
-<td>Content</td>
+<td>Body</td>
 <td><code>Content</code></td>
-</tr>
-<tr>
-<td>Referenced Message</td>
-<td><code>ReplyTo</code></td>
-</tr>
-<tr>
-<td>Attachments</td>
-<td><code>Media</code></td>
-</tr>
-<tr>
-<td>DM Channel</td>
-<td><code>IsDM = true</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="filtering-messages">Filtering Messages<a class="headerlink" href="#filtering-messages" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Only handle messages from specific guild</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">FromProviders</span><span class="p">(</span><span class="s">&quot;discord&quot;</span><span class="p">),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// Discord-specific handling</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">})</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">// Only DMs</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">DMOnly</span><span class="p">(),</span><span class="w"> </span><span class="nx">handler</span><span class="p">)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1">// Only guild channels</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">GroupOnly</span><span class="p">(),</span><span class="w"> </span><span class="nx">handler</span><span class="p">)</span>
-</code></pre></div>
 <h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">DISCORD_TOKEN</span><span class="o">=</span>your_discord_bot_token_here
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span>ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span>your_auth_token_here
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">TWILIO_PHONE_NUMBER</span><span class="o">=</span>+15551234567
+</code></pre></div>
+<h2 id="webhook-security">Webhook Security<a class="headerlink" href="#webhook-security" title="Permanent link">&para;</a></h2>
+<p>For production, validate incoming webhooks using Twilio's request signature:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// The webhook handler validates signatures when AuthToken is set</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="bot-not-receiving-messages">Bot not receiving messages<a class="headerlink" href="#bot-not-receiving-messages" title="Permanent link">&para;</a></h3>
+<h3 id="sms-not-sending">SMS not sending<a class="headerlink" href="#sms-not-sending" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Ensure <strong>Message Content Intent</strong> is enabled in Developer Portal</li>
-<li>Verify bot has <strong>Read Message History</strong> permission</li>
-<li>Check that the bot is in the channel</li>
+<li>Verify Account SID and Auth Token are correct</li>
+<li>Check phone number is SMS-capable</li>
+<li>Verify recipient number format (E.164: <code>+15551234567</code>)</li>
+<li>Check Twilio Console for error logs</li>
 </ol>
-<h3 id="permission-errors">Permission errors<a class="headerlink" href="#permission-errors" title="Permanent link">&para;</a></h3>
+<h3 id="webhooks-not-receiving">Webhooks not receiving<a class="headerlink" href="#webhooks-not-receiving" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Re-invite the bot with correct permissions</li>
-<li>Check channel-specific permission overrides</li>
+<li>Verify webhook URL is publicly accessible</li>
+<li>Check Twilio Console for webhook errors</li>
+<li>Ensure endpoint returns 200 status code</li>
+<li>Verify TLS certificate is valid (Twilio requires HTTPS)</li>
 </ol>
-<h3 id="rate-limiting">Rate limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h3>
-<p>Discord rate limits are handled automatically by discordgo. For high-volume bots, consider implementing message queuing.</p>
+<h3 id="phone-number-format">Phone number format<a class="headerlink" href="#phone-number-format" title="Permanent link">&para;</a></h3>
+<p>Always use E.164 format:</p>
+<ul>
+<li>Correct: <code>+15551234567</code></li>
+<li>Incorrect: <code>555-123-4567</code>, <code>(555) 123-4567</code></li>
+</ul>
+<h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>SMS only (no MMS support through OmniChat interface)</li>
+<li>No media attachments</li>
+<li>Character limits apply (160 for GSM-7, 70 for Unicode)</li>
+</ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../telegram/">Telegram</a> - Add Telegram support</li>
-<li><a href="../../reference/router/">Router</a> - Advanced routing patterns</li>
+<li><a href="../irc/">IRC</a> - Add IRC support</li>
+<li><a href="../../reference/router/">Router</a> - Message routing</li>
 </ul>
 
 
