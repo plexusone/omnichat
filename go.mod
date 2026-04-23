@@ -9,7 +9,7 @@ require (
 	github.com/grokify/gogoogle v0.9.0
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/twilio-go v0.4.0
-	github.com/slack-go/slack v0.22.0
+	github.com/slack-go/slack v0.23.0
 	go.mau.fi/whatsmeow v0.0.0-20260416104156-3ff20cd3462a
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
