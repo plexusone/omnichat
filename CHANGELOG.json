@@ -8,6 +8,21 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.6.1",
+      "date": "2026-05-03",
+      "highlights": [
+        { "description": "Gmail provider migrated to omni-google for unified Google ecosystem support" }
+      ],
+      "changed": [
+        { "description": "Gmail provider now wraps `omni-google/omnichat/gmail` instead of inline implementation" }
+      ],
+      "dependencies": [
+        { "description": "Add `github.com/plexusone/omni-google` v0.4.0" },
+        { "description": "Remove direct dependency on `github.com/grokify/gogoogle` (now indirect via omni-google)" },
+        { "description": "Remove direct dependency on `github.com/grokify/goauth` (now indirect via omni-google)" }
+      ]
+    },
+    {
       "version": "v0.6.0",
       "date": "2026-04-18",
       "highlights": [
