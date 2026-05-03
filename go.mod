@@ -8,7 +8,7 @@ require (
 	github.com/grokify/goauth v0.23.29
 	github.com/grokify/gogoogle v0.9.0
 	github.com/mdp/qrterminal/v3 v3.2.1
-	github.com/plexusone/twilio-go v0.4.0
+	github.com/plexusone/omni-twilio v0.5.0
 	github.com/slack-go/slack v0.23.0
 	go.mau.fi/whatsmeow v0.0.0-20260421083005-5b8886176ff7
 	google.golang.org/protobuf v1.36.11
@@ -36,7 +36,7 @@ require (
 	github.com/googleapis/enterprise-certificate-proxy v0.3.15 // indirect
 	github.com/googleapis/gax-go/v2 v2.22.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
-	github.com/grokify/mogo v0.74.2 // indirect
+	github.com/grokify/mogo v0.74.3 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect

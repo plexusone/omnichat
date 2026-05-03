@@ -14,7 +14,7 @@
         { "description": "Twilio SMS provider for omnichat integration" }
       ],
       "added": [
-        { "description": "Twilio SMS provider using `twilio-go/omnichat` for SMS messaging", "commit": "cafa42b" }
+        { "description": "Twilio SMS provider using `omni-twilio/omnichat` for SMS messaging", "commit": "cafa42b" }
       ],
       "fixed": [
         { "description": "Handle `socketClient.Ack` errors in Slack event handler instead of silently discarding", "commit": "c865ffb" }

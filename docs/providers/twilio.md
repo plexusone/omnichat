@@ -1,6 +1,6 @@
 # Twilio
 
-The Twilio provider uses [twilio-go](https://github.com/plexusone/twilio-go) for SMS messaging via Twilio's REST API.
+The Twilio provider uses [omni-twilio](https://github.com/plexusone/omni-twilio) for SMS messaging via Twilio's REST API.
 
 ## Installation
 

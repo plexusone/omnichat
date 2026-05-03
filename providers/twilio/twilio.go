@@ -1,14 +1,14 @@
 // Package twilio provides a Twilio SMS provider for omnichat.
 //
-// This package wraps github.com/plexusone/twilio-go/omnichat to provide
+// This package wraps github.com/plexusone/omni-twilio/omnichat to provide
 // a consistent interface with other omnichat providers.
 package twilio
 
 import (
 	"log/slog"
 
+	twiliosms "github.com/plexusone/omni-twilio/omnichat"
 	"github.com/plexusone/omnichat/provider"
-	twiliosms "github.com/plexusone/twilio-go/omnichat"
 )
 
 // Provider is an alias for the Twilio SMS provider.
