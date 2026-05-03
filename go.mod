@@ -5,9 +5,8 @@ go 1.26.0
 require (
 	github.com/bwmarrin/discordgo v0.29.0
 	github.com/ergochat/irc-go v0.6.0
-	github.com/grokify/goauth v0.23.29
-	github.com/grokify/gogoogle v0.9.0
 	github.com/mdp/qrterminal/v3 v3.2.1
+	github.com/plexusone/omni-google v0.4.0
 	github.com/plexusone/omni-twilio v0.5.0
 	github.com/slack-go/slack v0.23.0
 	go.mau.fi/whatsmeow v0.0.0-20260421083005-5b8886176ff7
@@ -36,6 +35,8 @@ require (
 	github.com/googleapis/enterprise-certificate-proxy v0.3.15 // indirect
 	github.com/googleapis/gax-go/v2 v2.22.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
+	github.com/grokify/goauth v0.23.29 // indirect
+	github.com/grokify/gogoogle v0.9.0 // indirect
 	github.com/grokify/mogo v0.74.3 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
@@ -65,8 +66,8 @@ require (
 	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/term v0.42.0 // indirect
 	golang.org/x/text v0.36.0 // indirect
-	google.golang.org/api v0.276.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260420184626-e10c466a9529 // indirect
+	google.golang.org/api v0.277.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260427160629-7cedc36a6bc4 // indirect
 	google.golang.org/grpc v1.80.0 // indirect
 	modernc.org/libc v1.72.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
