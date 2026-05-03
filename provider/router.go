@@ -99,11 +99,27 @@ func (r *Router) ProcessWithAgent() MessageHandler {
 			return err
 		}
 
+		r.logger.Info("agent response received",
+			"provider", msg.ProviderName,
+			"chat", msg.ChatID,
+			"response_length", len(response))
+
 		// Send response back to the same provider/chat
-		return r.Send(ctx, msg.ProviderName, msg.ChatID, OutgoingMessage{
+		if err := r.Send(ctx, msg.ProviderName, msg.ChatID, OutgoingMessage{
 			Content: response,
 			ReplyTo: msg.ID,
-		})
+		}); err != nil {
+			r.logger.Error("failed to send response",
+				"provider", msg.ProviderName,
+				"chat", msg.ChatID,
+				"error", err)
+			return err
+		}
+
+		r.logger.Info("response sent",
+			"provider", msg.ProviderName,
+			"chat", msg.ChatID)
+		return nil
 	}
 }
 
