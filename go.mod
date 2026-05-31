@@ -9,7 +9,7 @@ require (
 	github.com/plexusone/omni-google v0.4.1
 	github.com/plexusone/omni-twilio v0.5.0
 	github.com/slack-go/slack v0.24.0
-	go.mau.fi/whatsmeow v0.0.0-20260421083005-5b8886176ff7
+	go.mau.fi/whatsmeow v0.0.0-20260529101937-a7ea56383ec4
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
 	modernc.org/sqlite v1.51.0
@@ -36,37 +36,37 @@ require (
 	github.com/googleapis/gax-go/v2 v2.22.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/grokify/goauth v0.23.30 // indirect
-	github.com/grokify/gogoogle v0.9.0 // indirect
+	github.com/grokify/gogoogle v0.11.0 // indirect
 	github.com/grokify/mogo v0.74.5 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
-	github.com/mattn/go-colorable v0.1.14 // indirect
+	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/petermattis/goid v0.0.0-20260330135022-df67b199bc81 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/rs/zerolog v1.35.1 // indirect
-	github.com/twilio/twilio-go v1.30.5 // indirect
+	github.com/twilio/twilio-go v1.30.9 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.33 // indirect
-	go.mau.fi/libsignal v0.2.1 // indirect
-	go.mau.fi/util v0.9.8 // indirect
+	go.mau.fi/libsignal v0.2.2 // indirect
+	go.mau.fi/util v0.9.9 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.68.0 // indirect
-	go.opentelemetry.io/otel v1.43.0 // indirect
-	go.opentelemetry.io/otel/metric v1.43.0 // indirect
-	go.opentelemetry.io/otel/trace v1.43.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.69.0 // indirect
+	go.opentelemetry.io/otel v1.44.0 // indirect
+	go.opentelemetry.io/otel/metric v1.44.0 // indirect
+	go.opentelemetry.io/otel/trace v1.44.0 // indirect
 	golang.org/x/crypto v0.52.0 // indirect
-	golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a // indirect
+	golang.org/x/exp v0.0.0-20260529124908-c761662dc8c9 // indirect
 	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/term v0.43.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
-	google.golang.org/api v0.280.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260523011958-0a33c5d7ca68 // indirect
+	google.golang.org/api v0.282.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
 	google.golang.org/grpc v1.81.1 // indirect
-	modernc.org/libc v1.72.1 // indirect
+	modernc.org/libc v1.72.5 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	rsc.io/qr v0.2.0 // indirect
