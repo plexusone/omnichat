@@ -114,6 +114,22 @@ func (p *Provider) Disconnect(ctx context.Context) error {
 	return nil
 }
 
+// Slack-specific metadata keys for OutgoingMessage.Metadata.
+const (
+	// MetaUnfurlLinks controls whether to unfurl text-based links.
+	// Value: bool (default: true for markdown format, false otherwise)
+	MetaUnfurlLinks = "slack_unfurl_links"
+
+	// MetaUnfurlMedia controls whether to unfurl media-based links.
+	// Value: bool (default: true)
+	MetaUnfurlMedia = "slack_unfurl_media"
+
+	// MetaReplyBroadcast controls whether to broadcast a thread reply to the channel.
+	// Value: bool (default: false)
+	// Only applies when ReplyTo is set (i.e., replying in a thread).
+	MetaReplyBroadcast = "slack_reply_broadcast"
+)
+
 // Send sends a message to a Slack channel.
 func (p *Provider) Send(ctx context.Context, channelID string, msg provider.OutgoingMessage) error {
 	if p.api == nil {
@@ -128,11 +144,25 @@ func (p *Provider) Send(ctx context.Context, channelID string, msg provider.Outg
 	// Handle thread replies
 	if msg.ReplyTo != "" {
 		opts = append(opts, slack.MsgOptionTS(msg.ReplyTo))
+
+		// Check for reply broadcast (only applicable for thread replies)
+		if broadcast, ok := msg.Metadata[MetaReplyBroadcast].(bool); ok && broadcast {
+			opts = append(opts, slack.MsgOptionBroadcast())
+		}
 	}
 
-	// Handle message format
-	if msg.Format == provider.MessageFormatMarkdown {
+	// Handle unfurl controls
+	unfurlLinks := p.getUnfurlLinks(msg)
+	unfurlMedia := p.getUnfurlMedia(msg)
+
+	if unfurlLinks {
 		opts = append(opts, slack.MsgOptionEnableLinkUnfurl())
+	} else {
+		opts = append(opts, slack.MsgOptionDisableLinkUnfurl())
+	}
+
+	if !unfurlMedia {
+		opts = append(opts, slack.MsgOptionDisableMediaUnfurl())
 	}
 
 	_, _, err := p.api.PostMessageContext(ctx, channelID, opts...)
@@ -141,6 +171,26 @@ func (p *Provider) Send(ctx context.Context, channelID string, msg provider.Outg
 	}
 
 	return nil
+}
+
+// getUnfurlLinks returns whether to unfurl links based on metadata and format.
+func (p *Provider) getUnfurlLinks(msg provider.OutgoingMessage) bool {
+	// Check explicit metadata setting first
+	if val, ok := msg.Metadata[MetaUnfurlLinks].(bool); ok {
+		return val
+	}
+	// Default: enable for markdown format only
+	return msg.Format == provider.MessageFormatMarkdown
+}
+
+// getUnfurlMedia returns whether to unfurl media based on metadata.
+func (p *Provider) getUnfurlMedia(msg provider.OutgoingMessage) bool {
+	// Check explicit metadata setting first
+	if val, ok := msg.Metadata[MetaUnfurlMedia].(bool); ok {
+		return val
+	}
+	// Default: enable media unfurling
+	return true
 }
 
 // OnMessage registers a message handler.
