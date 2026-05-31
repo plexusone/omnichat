@@ -9,6 +9,7 @@ import (
 	_ "modernc.org/sqlite" // Pure-Go SQLite driver for session storage
 
 	"go.mau.fi/whatsmeow"
+	"go.mau.fi/whatsmeow/proto/waCommon"
 	"go.mau.fi/whatsmeow/proto/waE2E"
 	"go.mau.fi/whatsmeow/store/sqlstore"
 	"go.mau.fi/whatsmeow/types"
@@ -220,27 +221,116 @@ func (p *Provider) OnEvent(handler provider.EventHandler) {
 func (p *Provider) handleEvent(evt any) {
 	switch v := evt.(type) {
 	case *events.Message:
+		// Check if this is a reaction message
+		if reactionMsg := v.Message.GetReactionMessage(); reactionMsg != nil {
+			p.handleReactionMessage(v, reactionMsg)
+			return
+		}
+
 		if p.messageHandler != nil {
 			msg := p.convertIncoming(v)
 			if err := p.messageHandler(context.Background(), msg); err != nil {
 				p.logger.Error("message handler error", "error", err)
 			}
 		}
+	case *events.Receipt:
+		// Handle read/delivered receipts
+		if p.eventHandler != nil {
+			eventType := provider.EventType("receipt")
+			if err := p.eventHandler(context.Background(), provider.Event{
+				Type:         eventType,
+				ProviderName: "whatsapp",
+				ChatID:       v.Chat.String(),
+				Data: map[string]any{
+					"type":        string(v.Type),
+					"message_ids": v.MessageIDs,
+					"sender":      v.Sender.String(),
+				},
+				Timestamp: v.Timestamp,
+			}); err != nil {
+				p.logger.Error("event handler error", "event", "receipt", "error", err)
+			}
+		}
 	case *events.Connected:
 		p.logger.Info("whatsapp connected event received")
+		if p.eventHandler != nil {
+			_ = p.eventHandler(context.Background(), provider.Event{
+				Type:         provider.EventType("connected"),
+				ProviderName: "whatsapp",
+			})
+		}
 	case *events.Disconnected:
 		p.logger.Info("whatsapp disconnected event received")
+		if p.eventHandler != nil {
+			_ = p.eventHandler(context.Background(), provider.Event{
+				Type:         provider.EventType("disconnected"),
+				ProviderName: "whatsapp",
+			})
+		}
 	case *events.LoggedOut:
 		p.logger.Warn("whatsapp logged out")
+		if p.eventHandler != nil {
+			_ = p.eventHandler(context.Background(), provider.Event{
+				Type:         provider.EventType("logged_out"),
+				ProviderName: "whatsapp",
+			})
+		}
+	case *events.NewsletterJoin:
+		// Handle newsletter subscription
+		if p.eventHandler != nil {
+			_ = p.eventHandler(context.Background(), provider.Event{
+				Type:         provider.EventType("newsletter_join"),
+				ProviderName: "whatsapp",
+				ChatID:       v.ID.String(),
+				Data: map[string]any{
+					"name": v.ThreadMeta.Name.Text,
+				},
+			})
+		}
+	case *events.NewsletterLeave:
+		// Handle newsletter unsubscription
+		if p.eventHandler != nil {
+			_ = p.eventHandler(context.Background(), provider.Event{
+				Type:         provider.EventType("newsletter_leave"),
+				ProviderName: "whatsapp",
+				ChatID:       v.ID.String(),
+			})
+		}
+	}
+}
+
+// handleReactionMessage handles incoming reaction messages.
+func (p *Provider) handleReactionMessage(v *events.Message, reactionMsg *waE2E.ReactionMessage) {
+	if p.eventHandler == nil {
+		return
+	}
+
+	key := reactionMsg.GetKey()
+	reaction := reactionMsg.GetText()
+
+	// Empty reaction text means reaction was removed
+	added := reaction != ""
+
+	if err := p.eventHandler(context.Background(), provider.Event{
+		Type:         provider.EventTypeReaction,
+		ProviderName: "whatsapp",
+		ChatID:       v.Info.Chat.String(),
+		Data: map[string]any{
+			"message_id": key.GetID(),
+			"reaction":   reaction,
+			"sender":     v.Info.Sender.String(),
+			"is_from_me": v.Info.IsFromMe,
+			"added":      added,
+		},
+		Timestamp: v.Info.Timestamp,
+	}); err != nil {
+		p.logger.Error("event handler error", "event", "reaction", "error", err)
 	}
 }
 
 // convertIncoming converts a WhatsApp message to an IncomingMessage.
 func (p *Provider) convertIncoming(evt *events.Message) provider.IncomingMessage {
-	chatType := provider.ChatTypeDM
-	if evt.Info.IsGroup {
-		chatType = provider.ChatTypeGroup
-	}
+	chatType := p.determineChatType(evt)
 
 	// Extract text content from the message
 	content := ""
@@ -260,8 +350,10 @@ func (p *Provider) convertIncoming(evt *events.Message) provider.IncomingMessage
 		Content:      content,
 		Timestamp:    evt.Info.Timestamp,
 		Metadata: map[string]any{
-			"is_from_me": evt.Info.IsFromMe,
-			"is_group":   evt.Info.IsGroup,
+			"is_from_me":    evt.Info.IsFromMe,
+			"is_group":      evt.Info.IsGroup,
+			"is_newsletter": isNewsletter(evt.Info.Chat),
+			"is_status":     isStatusBroadcast(evt.Info.Chat),
 		},
 	}
 
@@ -287,12 +379,197 @@ func (p *Provider) convertIncoming(evt *events.Message) provider.IncomingMessage
 		}
 	}
 
+	// Handle image messages
+	if imgMsg := evt.Message.GetImageMessage(); imgMsg != nil {
+		imgData, err := p.client.Download(context.Background(), imgMsg)
+		if err != nil {
+			p.logger.Error("failed to download image", "error", err)
+		} else {
+			msg.Media = append(msg.Media, provider.Media{
+				Type:     provider.MediaTypeImage,
+				Data:     imgData,
+				MimeType: imgMsg.GetMimetype(),
+				Caption:  imgMsg.GetCaption(),
+			})
+		}
+	}
+
+	// Handle video messages
+	if videoMsg := evt.Message.GetVideoMessage(); videoMsg != nil {
+		videoData, err := p.client.Download(context.Background(), videoMsg)
+		if err != nil {
+			p.logger.Error("failed to download video", "error", err)
+		} else {
+			msg.Media = append(msg.Media, provider.Media{
+				Type:     provider.MediaTypeVideo,
+				Data:     videoData,
+				MimeType: videoMsg.GetMimetype(),
+				Caption:  videoMsg.GetCaption(),
+			})
+		}
+	}
+
+	// Handle document messages
+	if docMsg := evt.Message.GetDocumentMessage(); docMsg != nil {
+		docData, err := p.client.Download(context.Background(), docMsg)
+		if err != nil {
+			p.logger.Error("failed to download document", "error", err)
+		} else {
+			msg.Media = append(msg.Media, provider.Media{
+				Type:     provider.MediaTypeDocument,
+				Data:     docData,
+				MimeType: docMsg.GetMimetype(),
+				Filename: docMsg.GetFileName(),
+				Caption:  docMsg.GetCaption(),
+			})
+		}
+	}
+
 	return msg
+}
+
+// determineChatType determines the chat type based on the message info.
+func (p *Provider) determineChatType(evt *events.Message) provider.ChatType {
+	// Check for newsletter first
+	if isNewsletter(evt.Info.Chat) {
+		return provider.ChatTypeNewsletter
+	}
+
+	// Check for status broadcast
+	if isStatusBroadcast(evt.Info.Chat) {
+		return provider.ChatTypeStatus
+	}
+
+	// Check for group
+	if evt.Info.IsGroup {
+		return provider.ChatTypeGroup
+	}
+
+	return provider.ChatTypeDM
+}
+
+// isNewsletter checks if the JID represents a newsletter/channel.
+func isNewsletter(jid types.JID) bool {
+	return jid.Server == types.NewsletterServer
+}
+
+// isStatusBroadcast checks if the JID represents a status broadcast.
+func isStatusBroadcast(jid types.JID) bool {
+	return jid.Server == types.BroadcastServer && jid.User == "status"
 }
 
 // IsLoggedIn returns true if the client has an active session.
 func (p *Provider) IsLoggedIn() bool {
 	return p.client != nil && p.client.Store.ID != nil
+}
+
+// SendReaction sends a reaction emoji to a message.
+func (p *Provider) SendReaction(ctx context.Context, chatID, messageID, reaction string) error {
+	if p.client == nil {
+		return fmt.Errorf("whatsapp client not connected")
+	}
+
+	jid, err := types.ParseJID(chatID)
+	if err != nil {
+		return fmt.Errorf("parse chat ID: %w", err)
+	}
+
+	// Build reaction message
+	reactionMsg := &waE2E.Message{
+		ReactionMessage: &waE2E.ReactionMessage{
+			Key: &waCommon.MessageKey{
+				RemoteJID: proto.String(chatID),
+				ID:        proto.String(messageID),
+				FromMe:    proto.Bool(false),
+			},
+			Text: proto.String(reaction),
+		},
+	}
+
+	_, err = p.client.SendMessage(ctx, jid, reactionMsg)
+	if err != nil {
+		return fmt.Errorf("send reaction: %w", err)
+	}
+
+	return nil
+}
+
+// RemoveReaction removes a reaction from a message (by sending empty reaction).
+func (p *Provider) RemoveReaction(ctx context.Context, chatID, messageID string) error {
+	return p.SendReaction(ctx, chatID, messageID, "")
+}
+
+// GetNewsletters returns a list of subscribed newsletters.
+func (p *Provider) GetNewsletters(ctx context.Context) ([]Newsletter, error) {
+	if p.client == nil {
+		return nil, fmt.Errorf("whatsapp client not connected")
+	}
+
+	newsletters, err := p.client.GetSubscribedNewsletters(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("get newsletters: %w", err)
+	}
+
+	result := make([]Newsletter, len(newsletters))
+	for i, nl := range newsletters {
+		result[i] = Newsletter{
+			ID:          nl.ID.String(),
+			Name:        nl.ThreadMeta.Name.Text,
+			Description: nl.ThreadMeta.Description.Text,
+		}
+	}
+
+	return result, nil
+}
+
+// Newsletter represents a WhatsApp newsletter/channel.
+type Newsletter struct {
+	// ID is the newsletter JID.
+	ID string
+
+	// Name is the newsletter name.
+	Name string
+
+	// Description is the newsletter description.
+	Description string
+}
+
+// FollowNewsletter subscribes to a newsletter.
+func (p *Provider) FollowNewsletter(ctx context.Context, newsletterID string) error {
+	if p.client == nil {
+		return fmt.Errorf("whatsapp client not connected")
+	}
+
+	jid, err := types.ParseJID(newsletterID)
+	if err != nil {
+		return fmt.Errorf("parse newsletter ID: %w", err)
+	}
+
+	err = p.client.FollowNewsletter(ctx, jid)
+	if err != nil {
+		return fmt.Errorf("follow newsletter: %w", err)
+	}
+
+	return nil
+}
+
+// UnfollowNewsletter unsubscribes from a newsletter.
+func (p *Provider) UnfollowNewsletter(ctx context.Context, newsletterID string) error {
+	if p.client == nil {
+		return fmt.Errorf("whatsapp client not connected")
+	}
+
+	jid, err := types.ParseJID(newsletterID)
+	if err != nil {
+		return fmt.Errorf("parse newsletter ID: %w", err)
+	}
+
+	err = p.client.UnfollowNewsletter(ctx, jid)
+	if err != nil {
+		return fmt.Errorf("unfollow newsletter: %w", err)
+	}
+
+	return nil
 }
 
 // Ensure Provider implements provider.Provider interface.
