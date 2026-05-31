@@ -5,6 +5,7 @@ go 1.26.0
 require (
 	github.com/bwmarrin/discordgo v0.29.0
 	github.com/ergochat/irc-go v0.6.0
+	github.com/grokify/mogo v0.74.5
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.4.1
 	github.com/plexusone/omni-twilio v0.5.0
@@ -37,7 +38,6 @@ require (
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/grokify/goauth v0.23.30 // indirect
 	github.com/grokify/gogoogle v0.11.0 // indirect
-	github.com/grokify/mogo v0.74.5 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.22 // indirect

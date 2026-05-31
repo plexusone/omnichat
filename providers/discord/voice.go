@@ -8,10 +8,12 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"log/slog"
 	"sync"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/grokify/mogo/log/slogutil"
 
 	"github.com/plexusone/omnichat/provider"
 )
@@ -426,7 +428,11 @@ func (vc *VoiceConnection) StreamAudio(ctx context.Context, reader io.Reader, fr
 	if err := vc.SetSpeaking(true); err != nil {
 		return err
 	}
-	defer vc.SetSpeaking(false)
+	defer func() {
+		if err := vc.SetSpeaking(false); err != nil {
+			slogutil.LoggerFromContext(ctx, slog.Default()).Error("failed to set speaking state", "error", err)
+		}
+	}()
 
 	buf := make([]byte, frameSize)
 	for {
