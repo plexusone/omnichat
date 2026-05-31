@@ -609,6 +609,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#controlling-link-previews-unfurling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlling Link Previews (Unfurling)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sending-media" class="md-nav__link">
     <span class="md-ellipsis">
       Sending Media
@@ -1018,6 +1027,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../releases/v0.7.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    v0.7.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../releases/v0.6.1/" class="md-nav__link">
         
   
@@ -1334,6 +1366,15 @@
   <a href="#sending-messages" class="md-nav__link">
     <span class="md-ellipsis">
       Sending Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlling-link-previews-unfurling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlling Link Previews (Unfurling)
     </span>
   </a>
   
@@ -1703,28 +1744,95 @@
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is a thread reply&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="p">:</span><span class="w"> </span><span class="nx">parentMessageTS</span><span class="p">,</span><span class="w">  </span><span class="c1">// Thread timestamp</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="p">})</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c1">// Reply in thread AND broadcast to channel</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This reply will also appear in the channel&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="p">:</span><span class="w"> </span><span class="nx">parentMessageTS</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nx">Metadata</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nx">slack</span><span class="p">.</span><span class="nx">MetaReplyBroadcast</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="sending-media">Sending Media<a class="headerlink" href="#sending-media" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Send a file</span>
+<h3 id="controlling-link-previews-unfurling">Controlling Link Previews (Unfurling)<a class="headerlink" href="#controlling-link-previews-unfurling" title="Permanent link">&para;</a></h3>
+<p>Control how Slack displays link previews in messages:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Disable link unfurling</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Here&#39;s the report:&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeDocument</span><span class="p">,</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">fileBytes</span><span class="p">,</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;report.pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/pdf&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">})</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">// Send an image</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">imageBytes</span><span class="p">,</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;screenshot.png&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;image/png&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">}},</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="p">})</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Check this link: https://example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">Metadata</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nx">slack</span><span class="p">.</span><span class="nx">MetaUnfurlLinks</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// Don&#39;t show link preview</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">})</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1">// Disable media unfurling (images, videos in links)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/image.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">Metadata</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="nx">slack</span><span class="p">.</span><span class="nx">MetaUnfurlMedia</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">  </span><span class="c1">// Don&#39;t expand media</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">})</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="c1">// Enable unfurling for non-markdown messages</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nx">Metadata</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="nx">slack</span><span class="p">.</span><span class="nx">MetaUnfurlLinks</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="c1">// Show link preview</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">        </span><span class="nx">slack</span><span class="p">.</span><span class="nx">MetaUnfurlMedia</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">  </span><span class="c1">// Show media previews</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">})</span>
+</code></pre></div>
+<p><strong>Metadata Keys:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slack_unfurl_links</code></td>
+<td><code>bool</code></td>
+<td><code>true</code> for markdown</td>
+<td>Enable text link previews</td>
+</tr>
+<tr>
+<td><code>slack_unfurl_media</code></td>
+<td><code>bool</code></td>
+<td><code>true</code></td>
+<td>Enable media previews</td>
+</tr>
+<tr>
+<td><code>slack_reply_broadcast</code></td>
+<td><code>bool</code></td>
+<td><code>false</code></td>
+<td>Broadcast thread replies to channel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sending-media">Sending Media<a class="headerlink" href="#sending-media" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Send a file</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Here&#39;s the report:&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeDocument</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">fileBytes</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;report.pdf&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/pdf&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}},</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">})</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1">// Send an image</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">channelID</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">     </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="nx">Data</span><span class="p">:</span><span class="w">     </span><span class="nx">imageBytes</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="nx">Filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;screenshot.png&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="nx">MimeType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;image/png&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="p">}},</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="p">})</span>
 </code></pre></div>
 <h2 id="message-mapping">Message Mapping<a class="headerlink" href="#message-mapping" title="Permanent link">&para;</a></h2>
 <table>
@@ -1772,23 +1880,23 @@
 <h2 id="event-handling">Event Handling<a class="headerlink" href="#event-handling" title="Permanent link">&para;</a></h2>
 <p>The provider handles these Slack events:</p>
 <h3 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="c1">// msg.Content contains the message text</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="c1">// msg.ChatID is the channel ID</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">// msg.ReplyTo is set if this is a thread reply</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="c1">// msg.Content contains the message text</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="c1">// msg.ChatID is the channel ID</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="c1">// msg.ReplyTo is set if this is a thread reply</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="p">})</span>
 </code></pre></div>
 <h3 id="reactions">Reactions<a class="headerlink" href="#reactions" title="Permanent link">&para;</a></h3>
 <p>Reactions are delivered as messages with special content:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="c1">// This is a reaction</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nx">emoji</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Trim</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Reaction %s added&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">emoji</span><span class="p">)</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasSuffix</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="c1">// This is a reaction</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="nx">emoji</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Trim</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Reaction %s added&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">emoji</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">})</span>
 </code></pre></div>
 <h3 id="member-joins">Member Joins<a class="headerlink" href="#member-joins" title="Permanent link">&para;</a></h3>
 <p>Member join events are delivered as system messages.</p>
@@ -1825,8 +1933,8 @@
 </tbody>
 </table>
 <h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-your-bot-token-here
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-your-app-token-here
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">SLACK_BOT_TOKEN</span><span class="o">=</span>xoxb-your-bot-token-here
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">SLACK_APP_TOKEN</span><span class="o">=</span>xapp-your-app-token-here
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="bot-not-receiving-messages">Bot not receiving messages<a class="headerlink" href="#bot-not-receiving-messages" title="Permanent link">&para;</a></h3>

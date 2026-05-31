@@ -576,6 +576,63 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#chat-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#newsletters-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsletters (Channels)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Newsletters (Channels)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newsletter-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsletter Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiving-reactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving Reactions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#session-management" class="md-nav__link">
     <span class="md-ellipsis">
       Session Management
@@ -952,6 +1009,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../releases/v0.7.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    v0.7.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../releases/v0.6.1/" class="md-nav__link">
         
   
@@ -1260,6 +1340,63 @@
       Chat ID Format
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chat-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chat Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#newsletters-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsletters (Channels)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Newsletters (Channels)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newsletter-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsletter Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reactions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiving-reactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving Reactions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1583,12 +1720,86 @@
 <ul>
 <li>Individual: <code>1234567890@s.whatsapp.net</code></li>
 <li>Group: <code>123456789-1234567890@g.us</code></li>
+<li>Newsletter: <code>123456789@newsletter</code></li>
+<li>Status: <code>status@broadcast</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// Send to individual</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whatsapp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1234567890@s.whatsapp.net&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">)</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// Send to group</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whatsapp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123456789-1234567890@g.us&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="chat-types">Chat Types<a class="headerlink" href="#chat-types" title="Permanent link">&para;</a></h2>
+<p>The provider detects different chat types automatically:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">ChatType</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ChatTypeDM</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="c1">// Individual chat</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ChatTypeGroup</span><span class="p">:</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="c1">// Group chat</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ChatTypeNewsletter</span><span class="p">:</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="c1">// WhatsApp Channel/Newsletter message</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ChatTypeStatus</span><span class="p">:</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1">// Status broadcast</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">})</span>
+</code></pre></div>
+<h2 id="newsletters-channels">Newsletters (Channels)<a class="headerlink" href="#newsletters-channels" title="Permanent link">&para;</a></h2>
+<p>WhatsApp Channels/Newsletters are one-way broadcast channels:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">// Cast to whatsapp provider for extended methods</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nx">waProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">p</span><span class="p">.(</span><span class="o">*</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Provider</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1">// Get subscribed newsletters</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nx">newsletters</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">waProvider</span><span class="p">.</span><span class="nx">GetNewsletters</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">nl</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">newsletters</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Newsletter: %s (%s)\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">nl</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">nl</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">// Subscribe to a newsletter</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">waProvider</span><span class="p">.</span><span class="nx">FollowNewsletter</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123456789@newsletter&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1">// Unsubscribe from a newsletter</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">waProvider</span><span class="p">.</span><span class="nx">UnfollowNewsletter</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123456789@newsletter&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="newsletter-events">Newsletter Events<a class="headerlink" href="#newsletter-events" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnEvent</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">evt</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Type</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">EventType</span><span class="p">(</span><span class="s">&quot;newsletter_join&quot;</span><span class="p">):</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Joined newsletter: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">EventType</span><span class="p">(</span><span class="s">&quot;newsletter_leave&quot;</span><span class="p">):</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Left newsletter: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">ChatID</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">})</span>
+</code></pre></div>
+<h2 id="reactions">Reactions<a class="headerlink" href="#reactions" title="Permanent link">&para;</a></h2>
+<p>Send and receive emoji reactions on messages:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// Cast to whatsapp provider for extended methods</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">waProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">p</span><span class="p">.(</span><span class="o">*</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Provider</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">// Send a reaction</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">waProvider</span><span class="p">.</span><span class="nx">SendReaction</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">chatID</span><span class="p">,</span><span class="w"> </span><span class="nx">messageID</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;👍&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1">// Remove a reaction</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">waProvider</span><span class="p">.</span><span class="nx">RemoveReaction</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">chatID</span><span class="p">,</span><span class="w"> </span><span class="nx">messageID</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="receiving-reactions">Receiving Reactions<a class="headerlink" href="#receiving-reactions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnEvent</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">evt</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">EventTypeReaction</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="nx">messageID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;message_id&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="nx">reaction</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;reaction&quot;</span><span class="p">].(</span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="nx">added</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evt</span><span class="p">.</span><span class="nx">Data</span><span class="p">[</span><span class="s">&quot;added&quot;</span><span class="p">].(</span><span class="kt">bool</span><span class="p">)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">added</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Reaction %s added to message %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">reaction</span><span class="p">,</span><span class="w"> </span><span class="nx">messageID</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Reaction removed from message %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">messageID</span><span class="p">)</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">})</span>
 </code></pre></div>
 <h2 id="session-management">Session Management<a class="headerlink" href="#session-management" title="Permanent link">&para;</a></h2>
 <p>The SQLite database stores:</p>
@@ -1597,27 +1808,27 @@
 <li>Message history (optional)</li>
 <li>Contact information</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Different database per account</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nx">DBPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;account1.db&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="c1">// ...</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">})</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nx">DBPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;account2.db&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="c1">// ...</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Different database per account</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nx">p1</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nx">DBPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;account1.db&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">})</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nx">p2</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">whatsapp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">    </span><span class="nx">DBPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;account2.db&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="c1">// ...</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">})</span>
 </code></pre></div>
 <h2 id="group-features">Group Features<a class="headerlink" href="#group-features" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">GroupOnly</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// msg.ChatID is the group JID</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="c1">// msg.SenderID is the member who sent the message</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">GroupOnly</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="c1">// msg.ChatID is the group JID</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="c1">// msg.SenderID is the member who sent the message</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">})</span>
 </code></pre></div>
 <h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
 <p>No tokens needed - authentication is via QR code.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">WHATSAPP_DB_PATH</span><span class="o">=</span>./data/whatsapp.db
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">WHATSAPP_DB_PATH</span><span class="o">=</span>./data/whatsapp.db
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="qr-code-not-appearing">QR code not appearing<a class="headerlink" href="#qr-code-not-appearing" title="Permanent link">&para;</a></h3>
@@ -1650,6 +1861,7 @@
 <li>WhatsApp may restrict automated messaging</li>
 <li>Media size limits apply</li>
 <li>No official API - uses reverse-engineered protocol</li>
+<li>Newsletter posting requires admin permissions (reading is supported)</li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>

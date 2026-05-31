@@ -451,6 +451,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#provider-specific-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider-Specific Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#media" class="md-nav__link">
     <span class="md-ellipsis">
       Media
@@ -850,6 +859,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../releases/v0.7.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    v0.7.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../releases/v0.6.1/" class="md-nav__link">
         
   
@@ -1106,6 +1138,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#provider-specific-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider-Specific Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#media" class="md-nav__link">
     <span class="md-ellipsis">
       Media
@@ -1253,25 +1294,55 @@
 <h2 id="message-types">Message Types<a class="headerlink" href="#message-types" title="Permanent link">&para;</a></h2>
 <h3 id="incomingmessage">IncomingMessage<a class="headerlink" href="#incomingmessage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">IncomingMessage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">           </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Message ID</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">ProviderName</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Provider that received the message</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">ChatID</span><span class="w">       </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Chat/channel/thread ID</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">SenderID</span><span class="w">     </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Sender&#39;s user ID</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">SenderName</span><span class="w">   </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Sender&#39;s display name</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">Content</span><span class="w">      </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Text content</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="w">      </span><span class="kt">string</span><span class="w">    </span><span class="c1">// Parent message ID (for threads)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">Media</span><span class="w">        </span><span class="p">[]</span><span class="nx">Media</span><span class="w">   </span><span class="c1">// Attachments</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">IsDM</span><span class="w">         </span><span class="kt">bool</span><span class="w">      </span><span class="c1">// True if direct message</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">Timestamp</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="c1">// When the message was sent</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nx">ID</span><span class="w">           </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Message ID</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">ProviderName</span><span class="w"> </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Provider that received the message</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">ChatID</span><span class="w">       </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Chat/channel/thread ID</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">ChatType</span><span class="w">     </span><span class="nx">ChatType</span><span class="w">          </span><span class="c1">// dm, group, channel, thread, newsletter, status</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">SenderID</span><span class="w">     </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Sender&#39;s user ID</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">SenderName</span><span class="w">   </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Sender&#39;s display name</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">Content</span><span class="w">      </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Text content</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="w">      </span><span class="kt">string</span><span class="w">            </span><span class="c1">// Parent message ID (for threads)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">Media</span><span class="w">        </span><span class="p">[]</span><span class="nx">Media</span><span class="w">           </span><span class="c1">// Attachments</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">Timestamp</span><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w">         </span><span class="c1">// When the message was sent</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nx">Metadata</span><span class="w">     </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="w">    </span><span class="c1">// Provider-specific metadata</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ChatType</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nx">ChatTypeDM</span><span class="w">         </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;dm&quot;</span><span class="w">         </span><span class="c1">// Direct message</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="nx">ChatTypeGroup</span><span class="w">      </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;group&quot;</span><span class="w">      </span><span class="c1">// Group chat</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nx">ChatTypeChannel</span><span class="w">    </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;channel&quot;</span><span class="w">    </span><span class="c1">// Channel (Slack, Discord, Telegram)</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="nx">ChatTypeThread</span><span class="w">     </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;thread&quot;</span><span class="w">     </span><span class="c1">// Thread reply</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nx">ChatTypeNewsletter</span><span class="w"> </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;newsletter&quot;</span><span class="w"> </span><span class="c1">// WhatsApp Newsletter/Channel</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="nx">ChatTypeStatus</span><span class="w">     </span><span class="nx">ChatType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;status&quot;</span><span class="w">     </span><span class="c1">// WhatsApp Status broadcast</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">)</span>
 </code></pre></div>
 <h3 id="outgoingmessage">OutgoingMessage<a class="headerlink" href="#outgoingmessage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">OutgoingMessage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">Content</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="c1">// Text content</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="w"> </span><span class="kt">string</span><span class="w">  </span><span class="c1">// Message ID to reply to</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">Media</span><span class="w">   </span><span class="p">[]</span><span class="nx">Media</span><span class="w"> </span><span class="c1">// Attachments</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">Content</span><span class="w">  </span><span class="kt">string</span><span class="w">         </span><span class="c1">// Text content</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nx">ReplyTo</span><span class="w">  </span><span class="kt">string</span><span class="w">         </span><span class="c1">// Message ID to reply to</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nx">Media</span><span class="w">    </span><span class="p">[]</span><span class="nx">Media</span><span class="w">        </span><span class="c1">// Attachments</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nx">Format</span><span class="w">   </span><span class="nx">MessageFormat</span><span class="w">  </span><span class="c1">// plain, markdown, html</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nx">Metadata</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="w"> </span><span class="c1">// Provider-specific options</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </code></pre></div>
+<h3 id="provider-specific-metadata">Provider-Specific Metadata<a class="headerlink" href="#provider-specific-metadata" title="Permanent link">&para;</a></h3>
+<p>Each provider supports custom metadata keys:</p>
+<p><strong>Slack:</strong></p>
+<ul>
+<li><code>slack_unfurl_links</code> - Enable/disable link previews</li>
+<li><code>slack_unfurl_media</code> - Enable/disable media previews</li>
+<li><code>slack_reply_broadcast</code> - Broadcast thread reply to channel</li>
+</ul>
+<p><strong>Telegram:</strong></p>
+<ul>
+<li><code>telegram_inline_keyboard</code> - Inline keyboard buttons</li>
+<li><code>telegram_disable_preview</code> - Disable link preview</li>
+<li><code>telegram_disable_notification</code> - Send silently</li>
+<li><code>telegram_protect_content</code> - Prevent forwarding/saving</li>
+</ul>
+<p>See individual provider docs for details.</p>
 <h3 id="media">Media<a class="headerlink" href="#media" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Media</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">Type</span><span class="w">     </span><span class="nx">MediaType</span><span class="w"> </span><span class="c1">// Image, Audio, Video, Document, Voice</span>
@@ -1349,6 +1420,16 @@
 <td>No</td>
 </tr>
 <tr>
+<td>Voice channels</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
 <td>Reactions</td>
 <td>Yes</td>
 <td>Yes</td>
@@ -1383,6 +1464,86 @@
 <td>No</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Inline buttons</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Web App</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Localized commands</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Unfurl controls</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Reply broadcast</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Newsletters/Channels</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Voice channel allowlist</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Auto-follow users</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 <td>No</td>

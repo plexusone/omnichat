@@ -2,86 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://plexusone.github.io/omnichat/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/changelog/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/getting-started/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/discord/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/gmail/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/irc/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/slack/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/telegram/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/twilio/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/providers/whatsapp/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/reference/router/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/reference/testing/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/reference/voice/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.1.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.2.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.3.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.4.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.5.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.6.0/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
     </url>
     <url>
          <loc>https://plexusone.github.io/omnichat/releases/v0.6.1/</loc>
-         <lastmod>2026-05-03</lastmod>
+         <lastmod>2026-05-31</lastmod>
+    </url>
+    <url>
+         <loc>https://plexusone.github.io/omnichat/releases/v0.7.0/</loc>
+         <lastmod>2026-05-31</lastmod>
     </url>
 </urlset>
