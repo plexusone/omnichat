@@ -166,6 +166,144 @@ router.OnMessage(provider.All(), func(ctx context.Context, msg provider.Incoming
 })
 ```
 
+### Localized Commands
+
+Set commands for different languages programmatically:
+
+```go
+// Cast to telegram provider for extended methods
+tgProvider := p.(*telegram.Provider)
+
+// Set default commands
+err := tgProvider.SetCommands(ctx, []telegram.Command{
+    {Command: "start", Description: "Start the bot"},
+    {Command: "help", Description: "Show help"},
+})
+
+// Set localized commands for multiple languages
+err = tgProvider.SetLocalizedCommands(ctx, telegram.LocalizedCommands{
+    "":   {{Command: "start", Description: "Start the bot"}},           // Default
+    "es": {{Command: "start", Description: "Iniciar el bot"}},          // Spanish
+    "de": {{Command: "start", Description: "Bot starten"}},             // German
+    "zh": {{Command: "start", Description: "启动机器人"}},                // Chinese
+})
+
+// Delete commands for a specific language
+err = tgProvider.DeleteCommands(ctx, "es")
+```
+
+## Inline Keyboards & Web App Buttons
+
+Send messages with interactive inline keyboard buttons:
+
+```go
+// Send message with inline buttons
+router.Send(ctx, "telegram", chatID, provider.OutgoingMessage{
+    Content: "Choose an option:",
+    Metadata: map[string]any{
+        telegram.MetaInlineKeyboard: [][]telegram.InlineButton{
+            // First row
+            {
+                {Text: "Option 1", CallbackData: "opt1"},
+                {Text: "Option 2", CallbackData: "opt2"},
+            },
+            // Second row
+            {
+                {Text: "Visit Website", URL: "https://example.com"},
+            },
+        },
+    },
+})
+
+// Send with Web App button (opens a mini-app)
+router.Send(ctx, "telegram", chatID, provider.OutgoingMessage{
+    Content: "Open our app:",
+    Metadata: map[string]any{
+        telegram.MetaInlineKeyboard: [][]telegram.InlineButton{
+            {
+                {Text: "Open App", WebAppURL: "https://myapp.example.com"},
+            },
+        },
+    },
+})
+```
+
+### Handling Button Callbacks
+
+```go
+// Cast to telegram provider for callback handling
+tgProvider := p.(*telegram.Provider)
+
+// Handle inline button callbacks
+tgProvider.OnCallback(func(ctx context.Context, cb *telegram.Callback) error {
+    switch cb.Data {
+    case "opt1":
+        // Acknowledge the callback with optional text
+        tgProvider.AnswerCallback(ctx, cb.ID, "You chose Option 1!", false)
+    case "opt2":
+        // Show an alert popup
+        tgProvider.AnswerCallback(ctx, cb.ID, "Option 2 selected", true)
+    }
+    return nil
+})
+
+// Handle Web App data responses
+tgProvider.OnWebAppData(func(ctx context.Context, data *telegram.WebAppData) error {
+    // data.Data contains the data sent from the web app
+    // data.ButtonText is the button that opened the web app
+    log.Printf("Received from web app: %s", data.Data)
+    return nil
+})
+```
+
+### Button Types
+
+| Field | Description |
+|-------|-------------|
+| `Text` | Button label text (required) |
+| `URL` | Opens URL when pressed |
+| `CallbackData` | Data sent to bot when pressed |
+| `WebAppURL` | Opens Telegram Web App |
+| `SwitchInlineQuery` | Opens inline query in chat picker |
+| `SwitchInlineQueryCurrentChat` | Opens inline query in current chat |
+
+### Message Options
+
+```go
+// Silent message (no notification)
+router.Send(ctx, "telegram", chatID, provider.OutgoingMessage{
+    Content: "Silent message",
+    Metadata: map[string]any{
+        telegram.MetaDisableNotification: true,
+    },
+})
+
+// Disable link preview
+router.Send(ctx, "telegram", chatID, provider.OutgoingMessage{
+    Content: "Check https://example.com",
+    Metadata: map[string]any{
+        telegram.MetaDisablePreview: true,
+    },
+})
+
+// Protect content from forwarding/saving
+router.Send(ctx, "telegram", chatID, provider.OutgoingMessage{
+    Content: "Confidential message",
+    Metadata: map[string]any{
+        telegram.MetaProtectContent: true,
+    },
+})
+```
+
+**Metadata Keys:**
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `telegram_inline_keyboard` | `[][]InlineButton` | none | Inline keyboard rows |
+| `telegram_disable_preview` | `bool` | `false` | Disable link preview |
+| `telegram_disable_notification` | `bool` | `false` | Send silently |
+| `telegram_protect_content` | `bool` | `false` | Prevent forwarding/saving |
+
 ## Group Chats
 
 The bot can be added to groups:

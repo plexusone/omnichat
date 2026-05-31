@@ -43,28 +43,61 @@ type Provider interface {
 
 ```go
 type IncomingMessage struct {
-    ID           string    // Message ID
-    ProviderName string    // Provider that received the message
-    ChatID       string    // Chat/channel/thread ID
-    SenderID     string    // Sender's user ID
-    SenderName   string    // Sender's display name
-    Content      string    // Text content
-    ReplyTo      string    // Parent message ID (for threads)
-    Media        []Media   // Attachments
-    IsDM         bool      // True if direct message
-    Timestamp    time.Time // When the message was sent
+    ID           string            // Message ID
+    ProviderName string            // Provider that received the message
+    ChatID       string            // Chat/channel/thread ID
+    ChatType     ChatType          // dm, group, channel, thread, newsletter, status
+    SenderID     string            // Sender's user ID
+    SenderName   string            // Sender's display name
+    Content      string            // Text content
+    ReplyTo      string            // Parent message ID (for threads)
+    Media        []Media           // Attachments
+    Timestamp    time.Time         // When the message was sent
+    Metadata     map[string]any    // Provider-specific metadata
 }
+
+type ChatType string
+
+const (
+    ChatTypeDM         ChatType = "dm"         // Direct message
+    ChatTypeGroup      ChatType = "group"      // Group chat
+    ChatTypeChannel    ChatType = "channel"    // Channel (Slack, Discord, Telegram)
+    ChatTypeThread     ChatType = "thread"     // Thread reply
+    ChatTypeNewsletter ChatType = "newsletter" // WhatsApp Newsletter/Channel
+    ChatTypeStatus     ChatType = "status"     // WhatsApp Status broadcast
+)
 ```
 
 ### OutgoingMessage
 
 ```go
 type OutgoingMessage struct {
-    Content string  // Text content
-    ReplyTo string  // Message ID to reply to
-    Media   []Media // Attachments
+    Content  string         // Text content
+    ReplyTo  string         // Message ID to reply to
+    Media    []Media        // Attachments
+    Format   MessageFormat  // plain, markdown, html
+    Metadata map[string]any // Provider-specific options
 }
 ```
+
+### Provider-Specific Metadata
+
+Each provider supports custom metadata keys:
+
+**Slack:**
+
+- `slack_unfurl_links` - Enable/disable link previews
+- `slack_unfurl_media` - Enable/disable media previews
+- `slack_reply_broadcast` - Broadcast thread reply to channel
+
+**Telegram:**
+
+- `telegram_inline_keyboard` - Inline keyboard buttons
+- `telegram_disable_preview` - Disable link preview
+- `telegram_disable_notification` - Send silently
+- `telegram_protect_content` - Prevent forwarding/saving
+
+See individual provider docs for details.
 
 ### Media
 
@@ -111,10 +144,19 @@ Each provider may support additional features:
 | Text messages | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | Media attachments | Yes | Yes | Yes | Yes | Yes | No | No |
 | Voice messages | No | Yes | Yes | No | No | No | No |
+| Voice channels | Yes | No | No | No | No | No | No |
 | Reactions | Yes | Yes | Yes | Yes | No | No | No |
 | Threads | Yes | Yes | Yes | Yes | Yes | No | No |
 | Typing indicators | Yes | Yes | Yes | No | No | No | No |
 | Read receipts | No | Yes | Yes | No | No | No | No |
+| Inline buttons | No | Yes | No | No | No | No | No |
+| Web App | No | Yes | No | No | No | No | No |
+| Localized commands | No | Yes | No | No | No | No | No |
+| Unfurl controls | No | No | No | Yes | No | No | No |
+| Reply broadcast | No | No | No | Yes | No | No | No |
+| Newsletters/Channels | No | No | Yes | No | No | No | No |
+| Voice channel allowlist | Yes | No | No | No | No | No | No |
+| Auto-follow users | Yes | No | No | No | No | No | No |
 
 ## Error Handling
 

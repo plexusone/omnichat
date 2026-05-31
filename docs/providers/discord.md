@@ -27,6 +27,7 @@ p, err := discord.New(discord.Config{
 | `Token` | `string` | Yes | Discord bot token |
 | `GuildID` | `string` | No | Restrict to specific guild |
 | `Logger` | `*slog.Logger` | No | Logger instance |
+| `Voice` | `*VoiceConfig` | No | Voice channel configuration |
 
 ## Getting a Bot Token
 
@@ -183,6 +184,146 @@ DISCORD_TOKEN=your_discord_bot_token_here
 ### Rate limiting
 
 Discord rate limits are handled automatically by discordgo. For high-volume bots, consider implementing message queuing.
+
+## Voice Channels
+
+The Discord provider supports joining and managing voice channels.
+
+### Voice Configuration
+
+```go
+p, err := discord.New(discord.Config{
+    Token:  os.Getenv("DISCORD_TOKEN"),
+    Logger: logger,
+    Voice: &discord.VoiceConfig{
+        // Only allow specific channels
+        ChannelAllowlist: []string{"123456789", "987654321"},
+
+        // Block specific channels
+        ChannelBlocklist: []string{"111111111"},
+
+        // Auto-follow these users into voice
+        FollowUsers: []string{"user_id_1", "user_id_2"},
+
+        // Leave when channel becomes empty
+        AutoLeaveEmpty: true,
+        AutoLeaveTimeout: 5 * time.Minute,
+    },
+})
+```
+
+### Voice Config Options
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `ChannelAllowlist` | `[]string` | Only join these channel IDs (empty = all allowed) |
+| `ChannelBlocklist` | `[]string` | Never join these channel IDs |
+| `FollowUsers` | `[]string` | Auto-join when these users join voice |
+| `AutoLeaveEmpty` | `bool` | Leave when channel becomes empty |
+| `AutoLeaveTimeout` | `time.Duration` | Wait time before auto-leaving (default: 5min) |
+
+### Joining Voice Channels
+
+```go
+// Get the voice manager
+vm := p.Voice()
+
+// Join a voice channel
+err := vm.JoinChannel(ctx, guildID, channelID)
+
+// Or use the shorthand
+err := p.JoinVoice(ctx, guildID, channelID)
+
+// Leave voice
+err := p.LeaveVoice(guildID)
+```
+
+### Voice Events
+
+```go
+router.OnEvent(func(ctx context.Context, evt provider.Event) error {
+    switch evt.Type {
+    case provider.EventTypeVoiceJoin:
+        userID := evt.Data["user_id"].(string)
+        channelID := evt.Data["new_channel_id"].(string)
+        log.Printf("User %s joined voice channel %s", userID, channelID)
+
+    case provider.EventTypeVoiceLeave:
+        userID := evt.Data["user_id"].(string)
+        log.Printf("User %s left voice", userID)
+
+    case provider.EventTypeVoiceMove:
+        userID := evt.Data["user_id"].(string)
+        from := evt.Data["old_channel_id"].(string)
+        to := evt.Data["new_channel_id"].(string)
+        log.Printf("User %s moved from %s to %s", userID, from, to)
+
+    case provider.EventTypeVoiceSpeaker:
+        userID := evt.Data["user_id"].(string)
+        speaking := evt.Data["speaking"].(bool)
+        log.Printf("User %s speaking: %v", userID, speaking)
+    }
+    return nil
+})
+```
+
+### Sending Audio
+
+```go
+// Get voice connection
+conn := vm.GetConnection(guildID)
+if conn == nil {
+    return fmt.Errorf("not connected to voice")
+}
+
+// Send Opus-encoded audio
+err := conn.SendAudio(opusData)
+
+// Stream audio from a reader
+err := conn.StreamAudio(ctx, audioReader, frameSize)
+```
+
+### Receiving Audio
+
+```go
+conn := vm.GetConnection(guildID)
+
+// Get the audio receive channel
+audioChan := conn.ReceiveAudio()
+
+for packet := range audioChan {
+    // packet.Opus contains Opus-encoded audio
+    // packet.SSRC identifies the speaker
+    processAudio(packet)
+}
+```
+
+### Voice State Tracking
+
+```go
+// Get a user's voice state
+state := vm.GetVoiceState(userID)
+if state != nil {
+    fmt.Printf("User is in channel %s, muted: %v\n",
+        state.ChannelID, state.Muted)
+}
+
+// Get all users in a channel
+users := vm.GetChannelUsers(channelID)
+
+// Check if connected to a guild
+if vm.IsConnected(guildID) {
+    // Already in voice
+}
+```
+
+### Voice Bot Permissions
+
+For voice features, your bot needs additional permissions:
+
+- **Connect** - To join voice channels
+- **Speak** - To transmit audio
+- **Use Voice Activity** - For voice activity detection
 
 ## Next Steps
 

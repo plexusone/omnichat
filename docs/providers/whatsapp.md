@@ -173,6 +173,8 @@ WhatsApp JIDs (Jabber IDs) follow this format:
 
 - Individual: `1234567890@s.whatsapp.net`
 - Group: `123456789-1234567890@g.us`
+- Newsletter: `123456789@newsletter`
+- Status: `status@broadcast`
 
 ```go
 // Send to individual
@@ -180,6 +182,96 @@ router.Send(ctx, "whatsapp", "1234567890@s.whatsapp.net", msg)
 
 // Send to group
 router.Send(ctx, "whatsapp", "123456789-1234567890@g.us", msg)
+```
+
+## Chat Types
+
+The provider detects different chat types automatically:
+
+```go
+router.OnMessage(provider.All(), func(ctx context.Context, msg provider.IncomingMessage) error {
+    switch msg.ChatType {
+    case provider.ChatTypeDM:
+        // Individual chat
+    case provider.ChatTypeGroup:
+        // Group chat
+    case provider.ChatTypeNewsletter:
+        // WhatsApp Channel/Newsletter message
+    case provider.ChatTypeStatus:
+        // Status broadcast
+    }
+    return nil
+})
+```
+
+## Newsletters (Channels)
+
+WhatsApp Channels/Newsletters are one-way broadcast channels:
+
+```go
+// Cast to whatsapp provider for extended methods
+waProvider := p.(*whatsapp.Provider)
+
+// Get subscribed newsletters
+newsletters, err := waProvider.GetNewsletters(ctx)
+for _, nl := range newsletters {
+    fmt.Printf("Newsletter: %s (%s)\n", nl.Name, nl.ID)
+}
+
+// Subscribe to a newsletter
+err = waProvider.FollowNewsletter(ctx, "123456789@newsletter")
+
+// Unsubscribe from a newsletter
+err = waProvider.UnfollowNewsletter(ctx, "123456789@newsletter")
+```
+
+### Newsletter Events
+
+```go
+router.OnEvent(func(ctx context.Context, evt provider.Event) error {
+    switch evt.Type {
+    case provider.EventType("newsletter_join"):
+        name := evt.Data["name"].(string)
+        log.Printf("Joined newsletter: %s", name)
+    case provider.EventType("newsletter_leave"):
+        log.Printf("Left newsletter: %s", evt.ChatID)
+    }
+    return nil
+})
+```
+
+## Reactions
+
+Send and receive emoji reactions on messages:
+
+```go
+// Cast to whatsapp provider for extended methods
+waProvider := p.(*whatsapp.Provider)
+
+// Send a reaction
+err := waProvider.SendReaction(ctx, chatID, messageID, "👍")
+
+// Remove a reaction
+err = waProvider.RemoveReaction(ctx, chatID, messageID)
+```
+
+### Receiving Reactions
+
+```go
+router.OnEvent(func(ctx context.Context, evt provider.Event) error {
+    if evt.Type == provider.EventTypeReaction {
+        messageID := evt.Data["message_id"].(string)
+        reaction := evt.Data["reaction"].(string)
+        added := evt.Data["added"].(bool)
+
+        if added {
+            log.Printf("Reaction %s added to message %s", reaction, messageID)
+        } else {
+            log.Printf("Reaction removed from message %s", messageID)
+        }
+    }
+    return nil
+})
 ```
 
 ## Session Management
@@ -253,6 +345,7 @@ WHATSAPP_DB_PATH=./data/whatsapp.db
 - WhatsApp may restrict automated messaging
 - Media size limits apply
 - No official API - uses reverse-engineered protocol
+- Newsletter posting requires admin permissions (reading is supported)
 
 ## Next Steps
 

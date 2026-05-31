@@ -133,7 +133,55 @@ router.Send(ctx, "slack", channelID, provider.OutgoingMessage{
     Content: "This is a thread reply",
     ReplyTo: parentMessageTS,  // Thread timestamp
 })
+
+// Reply in thread AND broadcast to channel
+router.Send(ctx, "slack", channelID, provider.OutgoingMessage{
+    Content: "This reply will also appear in the channel",
+    ReplyTo: parentMessageTS,
+    Metadata: map[string]any{
+        slack.MetaReplyBroadcast: true,
+    },
+})
 ```
+
+### Controlling Link Previews (Unfurling)
+
+Control how Slack displays link previews in messages:
+
+```go
+// Disable link unfurling
+router.Send(ctx, "slack", channelID, provider.OutgoingMessage{
+    Content: "Check this link: https://example.com",
+    Metadata: map[string]any{
+        slack.MetaUnfurlLinks: false,  // Don't show link preview
+    },
+})
+
+// Disable media unfurling (images, videos in links)
+router.Send(ctx, "slack", channelID, provider.OutgoingMessage{
+    Content: "https://example.com/image.jpg",
+    Metadata: map[string]any{
+        slack.MetaUnfurlMedia: false,  // Don't expand media
+    },
+})
+
+// Enable unfurling for non-markdown messages
+router.Send(ctx, "slack", channelID, provider.OutgoingMessage{
+    Content: "https://example.com",
+    Metadata: map[string]any{
+        slack.MetaUnfurlLinks: true,  // Show link preview
+        slack.MetaUnfurlMedia: true,  // Show media previews
+    },
+})
+```
+
+**Metadata Keys:**
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| `slack_unfurl_links` | `bool` | `true` for markdown | Enable text link previews |
+| `slack_unfurl_media` | `bool` | `true` | Enable media previews |
+| `slack_reply_broadcast` | `bool` | `false` | Broadcast thread replies to channel |
 
 ### Sending Media
 
