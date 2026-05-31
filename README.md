@@ -34,18 +34,20 @@ A Go library providing a unified interface for messaging platforms.
 
 - 🔌 **Unified Interface** - Single API for multiple messaging platforms
 - 🔀 **Message Router** - Pattern-based routing with filters (`All`, `DMOnly`, `GroupOnly`, `FromProviders`)
-- 🎤 **Voice Support** - Transcription and synthesis integration for voice messages
+- 🎤 **Voice Support** - Transcription/synthesis for voice messages, Discord voice channels
 - 📎 **Media Handling** - Send and receive images, documents, audio, and video
+- ⌨️ **Interactive UI** - Telegram inline keyboards, Web App buttons
+- 📢 **Newsletters** - WhatsApp Channel/Newsletter support with reactions
 - 🧪 **Mock Provider** - Built-in testing support with message simulation
 
 ## Providers
 
 | Provider | Package | Features |
 |----------|---------|----------|
-| Discord | `providers/discord` | Guilds, DMs, threads, media |
-| Telegram | `providers/telegram` | Groups, channels, private chats, media |
-| WhatsApp | `providers/whatsapp` | QR auth, voice notes, media |
-| Slack | `providers/slack` | Socket Mode, channels, threads |
+| Discord | `providers/discord` | Guilds, DMs, threads, media, voice channels |
+| Telegram | `providers/telegram` | Groups, channels, inline keyboards, Web App, media |
+| WhatsApp | `providers/whatsapp` | QR auth, voice notes, newsletters, reactions, media |
+| Slack | `providers/slack` | Socket Mode, channels, threads, unfurl controls |
 | Gmail | `providers/email/gmail` | OAuth2, HTML/Markdown email |
 | IRC | `providers/irc` | TLS, NickServ auth, multi-channel |
 | Twilio | `providers/twilio` | SMS messaging, webhooks |
@@ -118,7 +120,13 @@ p, err := discord.New(discord.Config{
     Token:   "bot-token",
     GuildID: "optional-guild-id",
     Logger:  slog.Default(),
+    Voice: &discord.VoiceConfig{  // Optional voice support
+        AutoLeaveEmpty: true,
+    },
 })
+
+// Join voice channel
+p.JoinVoice(ctx, guildID, channelID)
 ```
 
 ### Telegram

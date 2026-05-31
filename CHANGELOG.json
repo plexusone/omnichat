@@ -8,18 +8,53 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.7.0",
+      "date": "2026-05-31",
+      "highlights": [
+        { "description": "Discord voice channel support with join/leave, audio streaming, and auto-follow" },
+        { "description": "Telegram inline keyboards and Web App integration" },
+        { "description": "WhatsApp newsletters (channels) and emoji reactions" }
+      ],
+      "added": [
+        { "description": "Discord voice channel support with `VoiceManager` for join/leave, audio send/receive, and state tracking", "commit": "427214a" },
+        { "description": "Discord voice configuration: channel allowlist/blocklist, auto-follow users, auto-leave empty channels", "commit": "427214a" },
+        { "description": "Discord voice events: `EventTypeVoiceJoin`, `EventTypeVoiceLeave`, `EventTypeVoiceMove`, `EventTypeVoiceSpeaker`", "commit": "6af0648" },
+        { "description": "Telegram inline keyboard buttons with URL, callback, Web App, and inline query support", "commit": "d286cf8" },
+        { "description": "Telegram Web App data handler for mini-app responses", "commit": "d286cf8" },
+        { "description": "Telegram localized bot commands with `SetLocalizedCommands`", "commit": "d286cf8" },
+        { "description": "Telegram metadata: `telegram_inline_keyboard`, `telegram_disable_preview`, `telegram_disable_notification`, `telegram_protect_content`", "commit": "d286cf8" },
+        { "description": "Slack metadata: `slack_unfurl_links`, `slack_unfurl_media`, `slack_reply_broadcast`", "commit": "2a68bc3" },
+        { "description": "WhatsApp newsletter support with `GetNewsletters`, `FollowNewsletter`, `UnfollowNewsletter`", "commit": "f40b1e2" },
+        { "description": "WhatsApp emoji reactions with `SendReaction` and `RemoveReaction`", "commit": "f40b1e2" },
+        { "description": "WhatsApp chat types: `ChatTypeNewsletter` and `ChatTypeStatus` for channels and status broadcasts", "commit": "6af0648" },
+        { "description": "WhatsApp image, video, and document media download handling", "commit": "f40b1e2" }
+      ],
+      "documentation": [
+        { "description": "Discord voice channel documentation with configuration, events, and audio examples", "commit": "54aee2d" },
+        { "description": "Telegram inline keyboard and Web App documentation", "commit": "54aee2d" },
+        { "description": "Slack unfurl controls and reply broadcast documentation", "commit": "54aee2d" },
+        { "description": "WhatsApp newsletter and reaction documentation", "commit": "54aee2d" },
+        { "description": "Provider feature matrix updated with new capabilities", "commit": "54aee2d" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/slack-go/slack` from 0.23.0 to 0.24.0", "commit": "a470e79" },
+        { "description": "Bump `github.com/plexusone/omni-google` from 0.4.0 to 0.4.1", "commit": "0719bae" },
+        { "description": "Bump `modernc.org/sqlite` from 1.50.0 to 1.51.0", "commit": "3a2ffe2" }
+      ]
+    },
+    {
       "version": "v0.6.1",
       "date": "2026-05-03",
       "highlights": [
         { "description": "Gmail provider migrated to omni-google for unified Google ecosystem support" }
       ],
       "changed": [
-        { "description": "Gmail provider now wraps `omni-google/omnichat/gmail` instead of inline implementation" }
+        { "description": "Gmail provider now wraps `omni-google/omnichat/gmail` instead of inline implementation", "commit": "944d228" }
       ],
       "dependencies": [
-        { "description": "Add `github.com/plexusone/omni-google` v0.4.0" },
-        { "description": "Remove direct dependency on `github.com/grokify/gogoogle` (now indirect via omni-google)" },
-        { "description": "Remove direct dependency on `github.com/grokify/goauth` (now indirect via omni-google)" }
+        { "description": "Add `github.com/plexusone/omni-google` v0.4.0", "commit": "b7dee86" },
+        { "description": "Remove direct dependency on `github.com/grokify/gogoogle` (now indirect via omni-google)", "commit": "b7dee86" },
+        { "description": "Remove direct dependency on `github.com/grokify/goauth` (now indirect via omni-google)", "commit": "b7dee86" }
       ]
     },
     {

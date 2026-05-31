@@ -10,7 +10,9 @@ OmniChat provides a single interface for building applications that communicate 
 
 - **Unified Interface** - Single API for all messaging platforms
 - **Router** - Pattern-based message routing with filters
-- **Voice Support** - Transcription and synthesis integration
+- **Voice Support** - Transcription/synthesis for voice messages, Discord voice channels
+- **Interactive UI** - Telegram inline keyboards, Web App buttons
+- **Newsletters** - WhatsApp Channel/Newsletter support with reactions
 - **Provider Registry** - Dynamic provider registration
 - **Testing** - Mock provider for unit tests
 
@@ -18,11 +20,13 @@ OmniChat provides a single interface for building applications that communicate 
 
 | Platform | Package | Status |
 |----------|---------|--------|
-| Discord | `providers/discord` | Stable |
-| Telegram | `providers/telegram` | Stable |
-| WhatsApp | `providers/whatsapp` | Stable |
-| Slack | `providers/slack` | New |
-| Gmail | `providers/email/gmail` | New |
+| Discord | `providers/discord` | Stable (voice channels in v0.7.0) |
+| Telegram | `providers/telegram` | Stable (inline keyboards in v0.7.0) |
+| WhatsApp | `providers/whatsapp` | Stable (newsletters in v0.7.0) |
+| Slack | `providers/slack` | Stable |
+| Gmail | `providers/email/gmail` | Stable |
+| IRC | `providers/irc` | Stable |
+| Twilio | `providers/twilio` | Stable |
 
 ## Quick Example
 
