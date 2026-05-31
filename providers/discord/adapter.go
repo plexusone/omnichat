@@ -19,6 +19,10 @@ type Provider struct {
 	logger         *slog.Logger
 	messageHandler provider.MessageHandler
 	eventHandler   provider.EventHandler
+
+	// Voice support
+	voiceManager *VoiceManager
+	voiceConfig  *VoiceConfig
 }
 
 // Config configures the Discord provider.
@@ -26,6 +30,9 @@ type Config struct {
 	Token   string
 	GuildID string
 	Logger  *slog.Logger
+
+	// Voice configuration (optional)
+	Voice *VoiceConfig
 }
 
 // New creates a new Discord provider.
@@ -38,9 +45,10 @@ func New(config Config) (*Provider, error) {
 	}
 
 	return &Provider{
-		token:   config.Token,
-		guildID: config.GuildID,
-		logger:  config.Logger,
+		token:       config.Token,
+		guildID:     config.GuildID,
+		logger:      config.Logger,
+		voiceConfig: config.Voice,
 	}, nil
 }
 
@@ -74,7 +82,18 @@ func (p *Provider) Connect(ctx context.Context) error {
 	})
 
 	// Set intents
-	p.session.Identify.Intents = discordgo.IntentsGuildMessages | discordgo.IntentsDirectMessages | discordgo.IntentsMessageContent
+	intents := discordgo.IntentsGuildMessages |
+		discordgo.IntentsDirectMessages |
+		discordgo.IntentsMessageContent |
+		discordgo.IntentsGuildVoiceStates
+
+	p.session.Identify.Intents = intents
+
+	// Set up voice manager if configured
+	if p.voiceConfig != nil {
+		p.voiceManager = NewVoiceManager(p, *p.voiceConfig)
+		p.voiceManager.RegisterHandlers(p.session)
+	}
 
 	// Open connection
 	if err := p.session.Open(); err != nil {
@@ -167,6 +186,27 @@ func getReplyTo(m *discordgo.MessageCreate) string {
 		return m.MessageReference.MessageID
 	}
 	return ""
+}
+
+// Voice returns the voice manager. Returns nil if voice is not configured.
+func (p *Provider) Voice() *VoiceManager {
+	return p.voiceManager
+}
+
+// JoinVoice joins a voice channel. Shorthand for Voice().JoinChannel().
+func (p *Provider) JoinVoice(ctx context.Context, guildID, channelID string) error {
+	if p.voiceManager == nil {
+		return fmt.Errorf("voice not configured")
+	}
+	return p.voiceManager.JoinChannel(ctx, guildID, channelID)
+}
+
+// LeaveVoice leaves a voice channel. Shorthand for Voice().LeaveChannel().
+func (p *Provider) LeaveVoice(guildID string) error {
+	if p.voiceManager == nil {
+		return fmt.Errorf("voice not configured")
+	}
+	return p.voiceManager.LeaveChannel(guildID)
 }
 
 // Ensure Provider implements provider.Provider interface.
