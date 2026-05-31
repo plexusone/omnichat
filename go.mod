@@ -8,11 +8,11 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.4.1
 	github.com/plexusone/omni-twilio v0.5.0
-	github.com/slack-go/slack v0.23.0
+	github.com/slack-go/slack v0.24.0
 	go.mau.fi/whatsmeow v0.0.0-20260421083005-5b8886176ff7
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
-	modernc.org/sqlite v1.50.0
+	modernc.org/sqlite v1.51.0
 )
 
 require (
