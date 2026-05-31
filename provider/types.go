@@ -102,10 +102,12 @@ const (
 type ChatType string
 
 const (
-	ChatTypeDM      ChatType = "dm"
-	ChatTypeGroup   ChatType = "group"
-	ChatTypeChannel ChatType = "channel"
-	ChatTypeThread  ChatType = "thread"
+	ChatTypeDM         ChatType = "dm"
+	ChatTypeGroup      ChatType = "group"
+	ChatTypeChannel    ChatType = "channel"
+	ChatTypeThread     ChatType = "thread"
+	ChatTypeNewsletter ChatType = "newsletter"
+	ChatTypeStatus     ChatType = "status"
 )
 
 // Event represents a provider event.
@@ -139,6 +141,12 @@ const (
 	EventTypeMemberLeft     EventType = "member_left"
 	EventTypeChannelCreated EventType = "channel_created"
 	EventTypeChannelDeleted EventType = "channel_deleted"
+
+	// Voice events
+	EventTypeVoiceJoin    EventType = "voice_join"    // User joined voice channel
+	EventTypeVoiceLeave   EventType = "voice_leave"   // User left voice channel
+	EventTypeVoiceMove    EventType = "voice_move"    // User moved between voice channels
+	EventTypeVoiceSpeaker EventType = "voice_speaker" // User started/stopped speaking
 )
 
 // Config is the base configuration for providers.
