@@ -9,7 +9,7 @@ require (
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.4.1
 	github.com/plexusone/omni-twilio v0.5.0
-	github.com/slack-go/slack v0.24.0
+	github.com/slack-go/slack v0.25.0
 	go.mau.fi/whatsmeow v0.0.0-20260529101937-a7ea56383ec4
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
