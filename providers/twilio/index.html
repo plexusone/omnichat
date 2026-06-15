@@ -651,9 +651,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#receiving-sms" class="md-nav__link">
+  <a href="#sending-mms" class="md-nav__link">
     <span class="md-ellipsis">
-      Receiving SMS
+      Sending MMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending RCS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receiving-smsmms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving SMS/MMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-incoming-media-mms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Incoming Media (MMS)
     </span>
   </a>
   
@@ -932,6 +959,29 @@
             Releases
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/v0.8.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    v0.8.0
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1258,9 +1308,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#receiving-sms" class="md-nav__link">
+  <a href="#sending-mms" class="md-nav__link">
     <span class="md-ellipsis">
-      Receiving SMS
+      Sending MMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-rcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending RCS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#receiving-smsmms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Receiving SMS/MMS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handling-incoming-media-mms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handling Incoming Media (MMS)
     </span>
   </a>
   
@@ -1378,7 +1455,7 @@
 
 
 <h1 id="twilio">Twilio<a class="headerlink" href="#twilio" title="Permanent link">&para;</a></h1>
-<p>The Twilio provider uses <a href="https://github.com/plexusone/omni-twilio">omni-twilio</a> for SMS messaging via Twilio's REST API.</p>
+<p>The Twilio provider uses <a href="https://github.com/plexusone/omni-twilio">omni-twilio</a> for SMS, MMS, and RCS messaging via Twilio's REST API.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>go<span class="w"> </span>get<span class="w"> </span>github.com/plexusone/omnichat/providers/twilio
 </code></pre></div>
@@ -1420,6 +1497,12 @@
 <td><code>string</code></td>
 <td>No</td>
 <td>Default outbound phone number (E.164 format)</td>
+</tr>
+<tr>
+<td><code>MessagingServiceSid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Messaging Service SID for RCS (enables RCS with SMS/MMS fallback)</td>
 </tr>
 <tr>
 <td><code>Logger</code></td>
@@ -1487,21 +1570,125 @@
 <a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="sending-sms">Sending SMS<a class="headerlink" href="#sending-sms" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Send to a phone number</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Send SMS to a phone number</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello from OmniChat!&quot;</span><span class="p">,</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">})</span>
 </code></pre></div>
-<h3 id="receiving-sms">Receiving SMS<a class="headerlink" href="#receiving-sms" title="Permanent link">&para;</a></h3>
-<p>Incoming SMS messages are received via Twilio webhooks. Configure your Twilio phone number to POST to your webhook endpoint:</p>
+<h3 id="sending-mms">Sending MMS<a class="headerlink" href="#sending-mms" title="Permanent link">&para;</a></h3>
+<p>Send media attachments (images, video, audio) via MMS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// Send MMS with an image</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Check out this photo!&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">            </span><span class="nx">URL</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;https://example.com/photo.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">})</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1">// Send multiple media attachments</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Here are the documents&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nx">Media</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="nx">provider</span><span class="p">.</span><span class="nx">Media</span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeImage</span><span class="p">,</span><span class="w"> </span><span class="nx">URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/image.jpg&quot;</span><span class="p">},</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">MediaTypeDocument</span><span class="p">,</span><span class="w"> </span><span class="nx">URL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/doc.pdf&quot;</span><span class="p">},</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="p">})</span>
+</code></pre></div>
+<p><strong>Note</strong>: MMS requires a URL-accessible media file. The URL must be publicly accessible by Twilio's servers.</p>
+<h3 id="sending-rcs">Sending RCS<a class="headerlink" href="#sending-rcs" title="Permanent link">&para;</a></h3>
+<p>RCS (Rich Communication Services) provides rich messaging with automatic fallback to SMS/MMS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/plexusone/omnichat/providers/twilio&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// Enable RCS by setting MessagingServiceSid</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nx">p</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">twilio</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">twilio</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nx">AccountSID</span><span class="p">:</span><span class="w">          </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_ACCOUNT_SID&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">AuthToken</span><span class="p">:</span><span class="w">           </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_AUTH_TOKEN&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nx">MessagingServiceSid</span><span class="p">:</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;TWILIO_MESSAGING_SERVICE_SID&quot;</span><span class="p">),</span><span class="w"> </span><span class="c1">// RCS-enabled</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nx">Logger</span><span class="p">:</span><span class="w">              </span><span class="nx">logger</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">})</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">// Send message - RCS attempted, falls back to SMS/MMS if unavailable</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello via RCS!&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="p">})</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1">// Send RCS with content template (rich cards, carousels)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nx">router</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;twilio&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;+15559876543&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">OutgoingMessage</span><span class="p">{</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nx">Content</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Order update&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nx">Metadata</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="s">&quot;content_sid&quot;</span><span class="p">:</span><span class="w">       </span><span class="s">&quot;HXxxxxxxxx&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Pre-created content template</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="s">&quot;content_variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">`{&quot;1&quot;: &quot;John&quot;, &quot;2&quot;: &quot;#12345&quot;}`</span><span class="p">,</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="p">})</span>
+</code></pre></div>
+<p><strong>RCS Setup:</strong></p>
+<ol>
+<li>Create a Messaging Service in the Twilio Console</li>
+<li>Add an RCS sender to your Messaging Service (requires carrier approval)</li>
+<li>Set <code>MessagingServiceSid</code> in your configuration</li>
+</ol>
+<p><strong>RCS Features:</strong></p>
+<ul>
+<li>Branded sender identity</li>
+<li>Rich cards and carousels (via Content API templates)</li>
+<li>Suggested replies and actions</li>
+<li>Read receipts and typing indicators</li>
+<li>Automatic fallback to SMS/MMS when RCS unavailable</li>
+</ul>
+<h3 id="receiving-smsmms">Receiving SMS/MMS<a class="headerlink" href="#receiving-smsmms" title="Permanent link">&para;</a></h3>
+<p>Incoming SMS and MMS messages are received via Twilio webhooks. Configure your Twilio phone number to POST to your webhook endpoint:</p>
 <ol>
 <li>Go to <strong>Phone Numbers</strong> &gt; <strong>Manage</strong> &gt; <strong>Active numbers</strong></li>
 <li>Click your phone number</li>
 <li>Under <strong>Messaging</strong>, set the webhook URL to your endpoint (e.g., <code>https://yourapp.com/sms</code>)</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// The webhook handler is provided by the provider</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/sms&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">WebhookHandler</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// The webhook handler is provided by the provider</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/sms&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">WebhookHandler</span><span class="p">())</span>
 </code></pre></div>
+<h3 id="handling-incoming-media-mms">Handling Incoming Media (MMS)<a class="headerlink" href="#handling-incoming-media-mms" title="Permanent link">&para;</a></h3>
+<p>When receiving MMS messages, media attachments are automatically extracted:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">router</span><span class="p">.</span><span class="nx">OnMessage</span><span class="p">(</span><span class="nx">provider</span><span class="p">.</span><span class="nx">All</span><span class="p">(),</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IncomingMessage</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="c1">// Check for media attachments</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Media</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Received %s: %s\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="p">.</span><span class="nx">Type</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="p">.</span><span class="nx">URL</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;MIME type: %s\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">media</span><span class="p">.</span><span class="nx">MimeType</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="c1">// Text content is still available</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Message:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Content</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">})</span>
+</code></pre></div>
+<p>Media types supported:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MediaTypeImage</code></td>
+<td>Images (JPEG, PNG, GIF, etc.)</td>
+</tr>
+<tr>
+<td><code>MediaTypeVideo</code></td>
+<td>Videos (MP4, etc.)</td>
+</tr>
+<tr>
+<td><code>MediaTypeAudio</code></td>
+<td>Audio files (MP3, WAV, etc.)</td>
+</tr>
+<tr>
+<td><code>MediaTypeDocument</code></td>
+<td>Other files (PDF, etc.)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="message-mapping">Message Mapping<a class="headerlink" href="#message-mapping" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1527,16 +1714,29 @@
 <td>Body</td>
 <td><code>Content</code></td>
 </tr>
+<tr>
+<td>MediaUrl0, MediaUrl1, ...</td>
+<td><code>Media</code> (slice of attachments)</td>
+</tr>
+<tr>
+<td>MediaContentType0, ...</td>
+<td><code>Media[].MimeType</code></td>
+</tr>
+<tr>
+<td>NumMedia</td>
+<td>Number of items in <code>Media</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span>ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span>your_auth_token_here
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">TWILIO_PHONE_NUMBER</span><span class="o">=</span>+15551234567
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span>ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span>your_auth_token_here
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">TWILIO_PHONE_NUMBER</span><span class="o">=</span>+15551234567
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nv">TWILIO_MESSAGING_SERVICE_SID</span><span class="o">=</span>MGxxxxxxxx<span class="w">  </span><span class="c1"># Optional: for RCS</span>
 </code></pre></div>
 <h2 id="webhook-security">Webhook Security<a class="headerlink" href="#webhook-security" title="Permanent link">&para;</a></h2>
 <p>For production, validate incoming webhooks using Twilio's request signature:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// The webhook handler validates signatures when AuthToken is set</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// The webhook handler validates signatures when AuthToken is set</span>
 </code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="sms-not-sending">SMS not sending<a class="headerlink" href="#sms-not-sending" title="Permanent link">&para;</a></h3>
@@ -1561,9 +1761,10 @@
 </ul>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
-<li>SMS only (no MMS support through OmniChat interface)</li>
-<li>No media attachments</li>
-<li>Character limits apply (160 for GSM-7, 70 for Unicode)</li>
+<li>SMS character limits apply (160 for GSM-7, 70 for Unicode per segment)</li>
+<li>MMS media must be URL-accessible (no direct byte uploads)</li>
+<li>MMS availability depends on carrier and region support</li>
+<li>Maximum 10 media attachments per MMS</li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
