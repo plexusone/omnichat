@@ -25,6 +25,10 @@ type Config struct {
 	// PhoneNumber is the default outbound phone number in E.164 format.
 	PhoneNumber string
 
+	// MessagingServiceSid is the Messaging Service SID for RCS senders.
+	// When set, RCS is attempted with automatic fallback to SMS/MMS.
+	MessagingServiceSid string
+
 	// Logger is the logger instance.
 	Logger *slog.Logger
 }
@@ -38,6 +42,10 @@ func New(config Config) (*Provider, error) {
 
 	if config.PhoneNumber != "" {
 		opts = append(opts, twiliosms.WithPhoneNumber(config.PhoneNumber))
+	}
+
+	if config.MessagingServiceSid != "" {
+		opts = append(opts, twiliosms.WithMessagingServiceSid(config.MessagingServiceSid))
 	}
 
 	if config.Logger != nil {
