@@ -26,7 +26,7 @@ OmniChat provides a single interface for building applications that communicate 
 | Slack | `providers/slack` | Stable |
 | Gmail | `providers/email/gmail` | Stable |
 | IRC | `providers/irc` | Stable |
-| Twilio | `providers/twilio` | Stable |
+| Twilio | `providers/twilio` | Stable (RCS support in v0.8.0) |
 
 ## Quick Example
 
