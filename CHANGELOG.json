@@ -8,6 +8,27 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.8.0",
+      "date": "2026-06-15",
+      "highlights": [
+        { "description": "Twilio RCS support with MessagingServiceSid configuration for rich messaging" }
+      ],
+      "added": [
+        { "description": "Twilio `MessagingServiceSid` config option for RCS messaging with automatic SMS/MMS fallback", "commit": "1a9939f" }
+      ],
+      "documentation": [
+        { "description": "Twilio MMS and RCS documentation with sending/receiving examples", "commit": "03cfd97" }
+      ],
+      "dependencies": [
+        { "description": "Bump `github.com/plexusone/omni-twilio` from 0.5.0 to 0.6.0", "commit": "09c4d01" },
+        { "description": "Bump `github.com/plexusone/omni-google` from 0.4.1 to 0.5.0", "commit": "09c4d01" },
+        { "description": "Bump `github.com/slack-go/slack` from 0.24.0 to 0.26.0", "commit": "09c4d01" },
+        { "description": "Bump `github.com/grokify/mogo` from 0.74.5 to 0.74.6", "commit": "318ebc3" },
+        { "description": "Bump `go.mau.fi/whatsmeow` to latest", "commit": "09c4d01" },
+        { "description": "Bump `modernc.org/sqlite` from 1.51.0 to 1.52.0", "commit": "ca51e38" }
+      ]
+    },
+    {
       "version": "v0.7.0",
       "date": "2026-05-31",
       "highlights": [
