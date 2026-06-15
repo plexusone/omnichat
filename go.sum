@@ -387,8 +387,8 @@ github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINE
 github.com/pkg/sftp v1.13.1/go.mod h1:3HaPG6Dq1ILlpPZRO0HVMrsydcdLt6HRDccSgb87qRg=
 github.com/plexusone/omni-google v0.5.0 h1:06jKfyleNlFtJpX8zmMS1qiT9yu7jebHZ2PTCw1z0k8=
 github.com/plexusone/omni-google v0.5.0/go.mod h1:tkOmLCodc11FIlmeDVH/PB+ll208/ktKYNe8JyfPpiY=
-github.com/plexusone/omni-twilio v0.6.0 h1:VqUKpp0CuKeuKp4PWHj6dFX4XjzWi2sYHmkb2Hlw+kM=
-github.com/plexusone/omni-twilio v0.6.0/go.mod h1:RdZ2NqL02CfReCceNCzyQtH9bw6zGbqqzEeEhFEL8Ek=
+github.com/plexusone/omni-twilio v0.8.0 h1:dLiklDTydunjUVLsppyQ1lxAiKcy9cCFWE7guQEuJMg=
+github.com/plexusone/omni-twilio v0.8.0/go.mod h1:Nuo7WMhztQjQtRP4/k6aKNIS4WTVPl0E4YUVkbdYFf4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/posener/complete v1.1.1/go.mod h1:em0nMJCgc9GFtwrmVmEMR/ZL6WyhyjMBndrE9hABlRI=

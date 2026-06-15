@@ -8,7 +8,7 @@ require (
 	github.com/grokify/mogo v0.74.6
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.5.0
-	github.com/plexusone/omni-twilio v0.6.0
+	github.com/plexusone/omni-twilio v0.8.0
 	github.com/slack-go/slack v0.26.0
 	go.mau.fi/whatsmeow v0.0.0-20260611094716-089932318bc2
 	google.golang.org/protobuf v1.36.11
