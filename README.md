@@ -50,7 +50,7 @@ A Go library providing a unified interface for messaging platforms.
 | Slack | `providers/slack` | Socket Mode, channels, threads, unfurl controls |
 | Gmail | `providers/email/gmail` | OAuth2, HTML/Markdown email |
 | IRC | `providers/irc` | TLS, NickServ auth, multi-channel |
-| Twilio | `providers/twilio` | SMS messaging, webhooks |
+| Twilio | `providers/twilio` | SMS/MMS/RCS messaging, webhooks, media attachments |
 
 ## Installation
 
@@ -173,17 +173,44 @@ p, err := irc.New(irc.Config{
 ### Twilio
 
 ```go
-import "github.com/plexusone/omnichat/providers/twilio"
+import (
+    "github.com/plexusone/omnichat/provider"
+    "github.com/plexusone/omnichat/providers/twilio"
+)
 
 p, err := twilio.New(twilio.Config{
-    AccountSID:  os.Getenv("TWILIO_ACCOUNT_SID"),
-    AuthToken:   os.Getenv("TWILIO_AUTH_TOKEN"),
-    PhoneNumber: os.Getenv("TWILIO_PHONE_NUMBER"), // Your Twilio number
-    Logger:      slog.Default(),
+    AccountSID:          os.Getenv("TWILIO_ACCOUNT_SID"),
+    AuthToken:           os.Getenv("TWILIO_AUTH_TOKEN"),
+    PhoneNumber:         os.Getenv("TWILIO_PHONE_NUMBER"),         // Your Twilio number
+    MessagingServiceSid: os.Getenv("TWILIO_MESSAGING_SERVICE_SID"), // Optional: for RCS
+    Logger:              slog.Default(),
 })
 
-// For receiving SMS, set up a webhook handler
+// Send SMS
+p.Send(ctx, "+15559876543", provider.OutgoingMessage{
+    Content: "Hello!",
+})
+
+// Send MMS with media
+p.Send(ctx, "+15559876543", provider.OutgoingMessage{
+    Content: "Check out this photo!",
+    Media: []provider.Media{
+        {Type: provider.MediaTypeImage, URL: "https://example.com/image.jpg"},
+    },
+})
+
+// When MessagingServiceSid is set, messages use RCS with SMS/MMS fallback
+
+// Handle incoming SMS/MMS via webhook
 http.Handle("/sms", p.WebhookHandler())
+
+// Access incoming media in message handler
+p.OnMessage(func(ctx context.Context, msg provider.IncomingMessage) error {
+    for _, media := range msg.Media {
+        fmt.Printf("Received %s: %s\n", media.Type, media.URL)
+    }
+    return nil
+})
 ```
 
 ## Router

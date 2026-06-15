@@ -1,6 +1,6 @@
 # Twilio
 
-The Twilio provider uses [omni-twilio](https://github.com/plexusone/omni-twilio) for SMS messaging via Twilio's REST API.
+The Twilio provider uses [omni-twilio](https://github.com/plexusone/omni-twilio) for SMS, MMS, and RCS messaging via Twilio's REST API.
 
 ## Installation
 
@@ -28,6 +28,7 @@ p, err := twilio.New(twilio.Config{
 | `AccountSID` | `string` | Yes | Twilio Account SID |
 | `AuthToken` | `string` | Yes | Twilio Auth Token |
 | `PhoneNumber` | `string` | No | Default outbound phone number (E.164 format) |
+| `MessagingServiceSid` | `string` | No | Messaging Service SID for RCS (enables RCS with SMS/MMS fallback) |
 | `Logger` | `*slog.Logger` | No | Logger instance |
 
 ## Twilio Setup
@@ -94,15 +95,87 @@ func main() {
 ### Sending SMS
 
 ```go
-// Send to a phone number
+// Send SMS to a phone number
 router.Send(ctx, "twilio", "+15559876543", provider.OutgoingMessage{
     Content: "Hello from OmniChat!",
 })
 ```
 
-### Receiving SMS
+### Sending MMS
 
-Incoming SMS messages are received via Twilio webhooks. Configure your Twilio phone number to POST to your webhook endpoint:
+Send media attachments (images, video, audio) via MMS:
+
+```go
+// Send MMS with an image
+router.Send(ctx, "twilio", "+15559876543", provider.OutgoingMessage{
+    Content: "Check out this photo!",
+    Media: []provider.Media{
+        {
+            Type: provider.MediaTypeImage,
+            URL:  "https://example.com/photo.jpg",
+        },
+    },
+})
+
+// Send multiple media attachments
+router.Send(ctx, "twilio", "+15559876543", provider.OutgoingMessage{
+    Content: "Here are the documents",
+    Media: []provider.Media{
+        {Type: provider.MediaTypeImage, URL: "https://example.com/image.jpg"},
+        {Type: provider.MediaTypeDocument, URL: "https://example.com/doc.pdf"},
+    },
+})
+```
+
+**Note**: MMS requires a URL-accessible media file. The URL must be publicly accessible by Twilio's servers.
+
+### Sending RCS
+
+RCS (Rich Communication Services) provides rich messaging with automatic fallback to SMS/MMS:
+
+```go
+import "github.com/plexusone/omnichat/providers/twilio"
+
+// Enable RCS by setting MessagingServiceSid
+p, err := twilio.New(twilio.Config{
+    AccountSID:          os.Getenv("TWILIO_ACCOUNT_SID"),
+    AuthToken:           os.Getenv("TWILIO_AUTH_TOKEN"),
+    MessagingServiceSid: os.Getenv("TWILIO_MESSAGING_SERVICE_SID"), // RCS-enabled
+    Logger:              logger,
+})
+
+// Send message - RCS attempted, falls back to SMS/MMS if unavailable
+router.Send(ctx, "twilio", "+15559876543", provider.OutgoingMessage{
+    Content: "Hello via RCS!",
+})
+
+// Send RCS with content template (rich cards, carousels)
+router.Send(ctx, "twilio", "+15559876543", provider.OutgoingMessage{
+    Content: "Order update",
+    Metadata: map[string]any{
+        "content_sid":       "HXxxxxxxxx", // Pre-created content template
+        "content_variables": `{"1": "John", "2": "#12345"}`,
+    },
+})
+```
+
+**RCS Setup:**
+
+1. Create a Messaging Service in the Twilio Console
+2. Add an RCS sender to your Messaging Service (requires carrier approval)
+3. Set `MessagingServiceSid` in your configuration
+
+**RCS Features:**
+
+- Branded sender identity
+- Rich cards and carousels (via Content API templates)
+- Suggested replies and actions
+- Read receipts and typing indicators
+- Automatic fallback to SMS/MMS when RCS unavailable
+
+### Receiving SMS/MMS
+
+Incoming SMS and MMS messages are received via Twilio webhooks. Configure your Twilio phone number to POST to your webhook endpoint:
 
 1. Go to **Phone Numbers** > **Manage** > **Active numbers**
 2. Click your phone number
@@ -113,6 +186,33 @@ Incoming SMS messages are received via Twilio webhooks. Configure your Twilio ph
 http.Handle("/sms", p.WebhookHandler())
 ```
 
+### Handling Incoming Media (MMS)
+
+When receiving MMS messages, media attachments are automatically extracted:
+
+```go
+router.OnMessage(provider.All(), func(ctx context.Context, msg provider.IncomingMessage) error {
+    // Check for media attachments
+    for _, media := range msg.Media {
+        fmt.Printf("Received %s: %s\n", media.Type, media.URL)
+        fmt.Printf("MIME type: %s\n", media.MimeType)
+    }
+
+    // Text content is still available
+    fmt.Println("Message:", msg.Content)
+    return nil
+})
+```
+
+Media types supported:
+
+| Type | Description |
+|------|-------------|
+| `MediaTypeImage` | Images (JPEG, PNG, GIF, etc.) |
+| `MediaTypeVideo` | Videos (MP4, etc.) |
+| `MediaTypeAudio` | Audio files (MP3, WAV, etc.) |
+| `MediaTypeDocument` | Other files (PDF, etc.) |
+
 ## Message Mapping
 
 | Twilio | OmniChat |
@@ -121,6 +221,9 @@ http.Handle("/sms", p.WebhookHandler())
 | From | `SenderID` |
 | To | `ChatID` |
 | Body | `Content` |
+| MediaUrl0, MediaUrl1, ... | `Media` (slice of attachments) |
+| MediaContentType0, ... | `Media[].MimeType` |
+| NumMedia | Number of items in `Media` |
 
 ## Environment Variables
 
@@ -128,6 +231,7 @@ http.Handle("/sms", p.WebhookHandler())
 TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 TWILIO_AUTH_TOKEN=your_auth_token_here
 TWILIO_PHONE_NUMBER=+15551234567
+TWILIO_MESSAGING_SERVICE_SID=MGxxxxxxxx  # Optional: for RCS
 ```
 
 ## Webhook Security
@@ -163,9 +267,10 @@ Always use E.164 format:
 
 ## Limitations
 
-- SMS only (no MMS support through OmniChat interface)
-- No media attachments
-- Character limits apply (160 for GSM-7, 70 for Unicode)
+- SMS character limits apply (160 for GSM-7, 70 for Unicode per segment)
+- MMS media must be URL-accessible (no direct byte uploads)
+- MMS availability depends on carrier and region support
+- Maximum 10 media attachments per MMS
 
 ## Next Steps
 
