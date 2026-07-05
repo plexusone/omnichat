@@ -1,6 +1,6 @@
 module github.com/plexusone/omnichat
 
-go 1.26.0
+go 1.26.4
 
 require (
 	github.com/bwmarrin/discordgo v0.29.0
@@ -8,7 +8,7 @@ require (
 	github.com/grokify/mogo v0.74.6
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.5.0
-	github.com/plexusone/omni-twilio v0.6.0
+	github.com/plexusone/omni-twilio v0.9.0
 	github.com/slack-go/slack v0.27.0
 	go.mau.fi/whatsmeow v0.0.0-20260611094716-089932318bc2
 	google.golang.org/protobuf v1.36.11
