@@ -7,7 +7,7 @@ require (
 	github.com/ergochat/irc-go v0.6.0
 	github.com/grokify/mogo v0.74.6
 	github.com/mdp/qrterminal/v3 v3.2.1
-	github.com/plexusone/omni-google v0.5.0
+	github.com/plexusone/omni-google v0.6.1
 	github.com/plexusone/omni-twilio v0.9.0
 	github.com/slack-go/slack v0.27.0
 	go.mau.fi/whatsmeow v0.0.0-20260611094716-089932318bc2
@@ -63,8 +63,8 @@ require (
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/term v0.44.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
-	google.golang.org/api v0.284.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260610212136-7ab31c22f7ad // indirect
+	google.golang.org/api v0.285.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260618152121-87f3d3e198d3 // indirect
 	google.golang.org/grpc v1.81.1 // indirect
 	modernc.org/libc v1.73.4 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
