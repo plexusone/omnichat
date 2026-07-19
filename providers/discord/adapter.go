@@ -5,11 +5,17 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 
 	"github.com/plexusone/omnichat/provider"
 )
+
+// maxMessageLength is Discord's per-message limit, in characters (not bytes).
+// Messages exceeding it are rejected by the API, so longer content is split
+// across several messages.
+const maxMessageLength = 2000
 
 // Provider implements the Provider interface for Discord.
 type Provider struct {
@@ -121,23 +127,98 @@ func (p *Provider) Send(ctx context.Context, channelID string, msg provider.Outg
 		return fmt.Errorf("discord session not connected")
 	}
 
-	// Build message send options
-	data := &discordgo.MessageSend{
-		Content: msg.Content,
-	}
+	// Content over the limit must be sent as multiple messages; agent replies
+	// routinely exceed it.
+	chunks := splitMessage(msg.Content, maxMessageLength)
 
-	if msg.ReplyTo != "" {
-		data.Reference = &discordgo.MessageReference{
-			MessageID: msg.ReplyTo,
+	for i, chunk := range chunks {
+		data := &discordgo.MessageSend{
+			Content: chunk,
+		}
+
+		// Only the first message carries the reference; repeating it would
+		// render as several separate replies to the same message.
+		if i == 0 && msg.ReplyTo != "" {
+			data.Reference = &discordgo.MessageReference{
+				MessageID: msg.ReplyTo,
+			}
+		}
+
+		if _, err := p.session.ChannelMessageSendComplex(channelID, data); err != nil {
+			return fmt.Errorf("send message: %w", err)
 		}
 	}
 
-	_, err := p.session.ChannelMessageSendComplex(channelID, data)
-	if err != nil {
-		return fmt.Errorf("send message: %w", err)
+	return nil
+}
+
+// splitMessage splits content into chunks of at most maxLen characters,
+// breaking on newlines or spaces where possible so words stay intact.
+// Content within the limit is returned unchanged as a single chunk.
+func splitMessage(content string, maxLen int) []string {
+	runes := []rune(content)
+	if maxLen <= 0 || len(runes) <= maxLen {
+		return []string{content}
 	}
 
-	return nil
+	var chunks []string
+	for len(runes) > maxLen {
+		// Prefer a natural break point, but only accept one in the latter half
+		// of the window so a single long unbroken run still makes progress.
+		// Paragraph breaks come first: splitting on any newline tends to strand
+		// a heading at the end of a chunk, away from the text it introduces.
+		breakPoint := maxLen
+		if idx := lastIndexParagraphBreak(runes[:maxLen]); idx > maxLen/2 {
+			breakPoint = idx
+		} else if idx := lastIndexRune(runes[:maxLen], '\n'); idx > maxLen/2 {
+			breakPoint = idx
+		} else if idx := lastIndexRune(runes[:maxLen], ' '); idx > maxLen/2 {
+			breakPoint = idx
+		}
+
+		if chunk := strings.TrimRight(string(runes[:breakPoint]), " \n"); chunk != "" {
+			chunks = append(chunks, chunk)
+		}
+
+		// Drop the whitespace we broke on so it doesn't lead the next chunk.
+		runes = runes[breakPoint:]
+		for len(runes) > 0 && (runes[0] == '\n' || runes[0] == ' ') {
+			runes = runes[1:]
+		}
+	}
+
+	if rest := strings.TrimRight(string(runes), " \n"); rest != "" {
+		chunks = append(chunks, rest)
+	}
+
+	// Only reachable for content that is entirely whitespace; return it as-is
+	// rather than silently dropping the send.
+	if len(chunks) == 0 {
+		return []string{content}
+	}
+
+	return chunks
+}
+
+// lastIndexParagraphBreak returns the index of the first newline of the last
+// blank-line separator, or -1 if there is none.
+func lastIndexParagraphBreak(runes []rune) int {
+	for i := len(runes) - 2; i >= 0; i-- {
+		if runes[i] == '\n' && runes[i+1] == '\n' {
+			return i
+		}
+	}
+	return -1
+}
+
+// lastIndexRune returns the index of the last occurrence of r, or -1.
+func lastIndexRune(runes []rune, r rune) int {
+	for i := len(runes) - 1; i >= 0; i-- {
+		if runes[i] == r {
+			return i
+		}
+	}
+	return -1
 }
 
 // OnMessage registers a message handler.
