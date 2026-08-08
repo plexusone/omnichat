@@ -13,7 +13,7 @@ require (
 	go.mau.fi/whatsmeow v0.0.0-20260718134955-fac667d55293
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/telebot.v3 v3.3.8
-	modernc.org/sqlite v1.55.0
+	modernc.org/sqlite v1.56.0
 )
 
 require (
@@ -40,7 +40,7 @@ require (
 	github.com/grokify/gogoogle v0.11.0 // indirect
 	github.com/huandu/xstrings v1.5.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
-	github.com/mattn/go-isatty v0.0.23 // indirect
+	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/ncruces/go-strftime v1.0.0 // indirect
 	github.com/petermattis/goid v0.0.0-20260716134002-a9b348f0a2b9 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -66,7 +66,7 @@ require (
 	google.golang.org/api v0.289.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260715232425-e75dac1f907d // indirect
 	google.golang.org/grpc v1.82.1 // indirect
-	modernc.org/libc v1.74.2 // indirect
+	modernc.org/libc v1.74.4 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	rsc.io/qr v0.2.0 // indirect
