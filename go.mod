@@ -4,7 +4,7 @@ go 1.26.4
 
 require (
 	github.com/bwmarrin/discordgo v0.29.0
-	github.com/ergochat/irc-go v0.6.0
+	github.com/ergochat/irc-go v0.7.0
 	github.com/grokify/mogo v0.74.6
 	github.com/mdp/qrterminal/v3 v3.2.1
 	github.com/plexusone/omni-google v0.7.0
